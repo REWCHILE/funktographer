@@ -3,6 +3,13 @@
 if (defined('FUNK_INIT')) return;
 define('FUNK_INIT', true);
 
+// Enable error reporting if ?debug=1 is present
+if (isset($_GET['debug']) && $_GET['debug'] === '1') {
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+}
+
 // Start session securely
 if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
     @ini_set('session.cookie_httponly', 1);

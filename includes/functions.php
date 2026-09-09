@@ -10,11 +10,17 @@ function get_setting($key, $default = '') {
     static $cache = [];
     if (isset($cache[$key])) return $cache[$key];
     
-    $stmt = $pdo->prepare("SELECT setting_value FROM site_settings WHERE setting_key = ?");
-    $stmt->execute([$key]);
-    $row = $stmt->fetch();
-    $cache[$key] = $row ? $row['setting_value'] : $default;
-    return $cache[$key];
+    if (!$pdo) return $default;
+    
+    try {
+        $stmt = $pdo->prepare("SELECT setting_value FROM site_settings WHERE setting_key = ?");
+        $stmt->execute([$key]);
+        $row = $stmt->fetch();
+        $cache[$key] = $row ? $row['setting_value'] : $default;
+        return $cache[$key];
+    } catch (Exception $e) {
+        return $default;
+    }
 }
 
 /**

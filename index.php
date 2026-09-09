@@ -7,15 +7,28 @@ $pageTitle = "Fotografía y Video Profesional en Santiago de Chile";
 $pageDescription = "Capturamos mucho más que momentos. Contamos historias a través de imágenes de eventos corporativos, fotografía gastronómica y retratos profesionales.";
 
 // Fetch active home images from MySQL ordered by display_order
-$stmt = $pdo->query("SELECT * FROM home_images WHERE is_active = 1 ORDER BY display_order ASC, id DESC");
-$homeImages = $stmt->fetchAll();
+try {
+    $stmt = $pdo ? $pdo->query("SELECT * FROM home_images WHERE is_active = 1 ORDER BY display_order ASC, id DESC") : null;
+    $homeImages = $stmt ? $stmt->fetchAll() : [];
+} catch (Exception $e) {
+    $homeImages = [];
+}
 
 // Fetch featured projects for the highlight section
-$stmtProj = $pdo->query("SELECT * FROM projects WHERE is_featured = 1 ORDER BY display_order ASC LIMIT 3");
-$featuredProjects = $stmtProj->fetchAll();
+try {
+    $stmtProj = $pdo ? $pdo->query("SELECT * FROM projects WHERE is_featured = 1 ORDER BY display_order ASC LIMIT 3") : null;
+    $featuredProjects = $stmtProj ? $stmtProj->fetchAll() : [];
+} catch (Exception $e) {
+    $featuredProjects = [];
+}
 
 // Fetch dynamic categories ordered by display_order for filter pills
-$categories = $pdo->query("SELECT * FROM categories WHERE is_active = 1 ORDER BY display_order ASC, id ASC")->fetchAll();
+try {
+    $catStmt = $pdo ? $pdo->query("SELECT * FROM categories WHERE is_active = 1 ORDER BY display_order ASC, id ASC") : null;
+    $categories = $catStmt ? $catStmt->fetchAll() : [];
+} catch (Exception $e) {
+    $categories = [];
+}
 
 include __DIR__ . '/includes/header.php';
 ?>
