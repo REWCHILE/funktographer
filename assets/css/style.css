@@ -172,7 +172,7 @@ button, input, textarea, select {
 }
 
 .brand-logo img {
-  height: 64px;
+  height: 72px;
   width: auto;
   object-fit: contain;
   transition: var(--transition);
@@ -180,7 +180,7 @@ button, input, textarea, select {
 }
 
 .site-header.scrolled .brand-logo img {
-  height: 52px;
+  height: 56px;
 }
 
 .nav-menu {
@@ -1929,7 +1929,7 @@ textarea.form-control {
 
 @media (max-width: 768px) {
   .btn-header-cta { display: none !important; }
-  .brand-logo img { height: 54px; }
+  .brand-logo img { height: 60px; }
   .gallery-grid { columns: 2 160px; }
   .projects-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
@@ -1943,7 +1943,7 @@ textarea.form-control {
 }
 
 @media (max-width: 480px) {
-  .brand-logo img { height: 48px; }
+  .brand-logo img { height: 52px; }
   .gallery-grid { columns: 1 100%; }
   .project-meta-badges { gap: 8px; }
   .project-pill-info { font-size: 0.8rem; padding: 4px 12px; }
