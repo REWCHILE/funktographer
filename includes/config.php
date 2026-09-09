@@ -10,13 +10,24 @@ if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
     session_start();
 }
 
-// Database configuration
-define('DB_HOST', '127.0.0.1');
-define('DB_PORT', '3306');
-define('DB_NAME', 'funktographer_db');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_CHARSET', 'utf8mb4');
+// Database configuration (Auto-detects Local vs Production)
+$isLocalEnv = (isset($_SERVER['HTTP_HOST']) && (str_contains($_SERVER['HTTP_HOST'], '127.0.0.1') || str_contains($_SERVER['HTTP_HOST'], 'localhost'))) || (PHP_OS_FAMILY === 'Windows');
+
+if ($isLocalEnv) {
+    define('DB_HOST', '127.0.0.1');
+    define('DB_PORT', '3306');
+    define('DB_NAME', 'funktographer_db');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_CHARSET', 'utf8mb4');
+} else {
+    define('DB_HOST', 'localhost');
+    define('DB_PORT', '3306');
+    define('DB_NAME', 'cfu58607_funktophotographer');
+    define('DB_USER', 'cfu58607_funktophotographer');
+    define('DB_PASS', 'EPq0kP)pdH;$P]8b');
+    define('DB_CHARSET', 'utf8mb4');
+}
 
 // Paths & URLs
 define('ROOT_PATH', dirname(__DIR__));
