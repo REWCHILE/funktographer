@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = $stmt->fetch();
         if ($row) {
             $filePath = ROOT_PATH . '/' . $row['image_url'];
-            if (file_exists($filePath)) {
+            if (!empty($row['image_url']) && str_starts_with($row['image_url'], 'uploads/') && file_exists($filePath)) {
                 @unlink($filePath);
             }
             $pdo->prepare("DELETE FROM home_images WHERE id = ?")->execute([$id]);

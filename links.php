@@ -37,7 +37,7 @@ $pageDescription = "Enlaces oficiales, redes sociales, contacto directo y portaf
   <meta property="og:type" content="profile">
   <meta property="og:image" content="<?= BASE_URL ?>/assets/img/logo.png">
 
-  <link rel="icon" type="image/png" href="<?= BASE_URL ?>/assets/img/logo.png">
+  <link rel="icon" type="image/png" href="<?= BASE_URL ?>/assets/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">

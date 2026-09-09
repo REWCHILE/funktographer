@@ -25,7 +25,8 @@ $pageDescription = isset($pageDescription) ? $pageDescription : $siteTagline;
   <meta property="og:type" content="website">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="<?= BASE_URL ?>/assets/img/logo.png">
+  <link rel="icon" type="image/png" href="<?= BASE_URL ?>/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="<?= BASE_URL ?>/assets/img/favicon.png">
 
   <!-- Icons (FontAwesome or Bootstrap icons lightweight CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
