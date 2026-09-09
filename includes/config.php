@@ -3,18 +3,36 @@
 if (defined('FUNK_INIT')) return;
 define('FUNK_INIT', true);
 
-// Enable error reporting if ?debug=1 is present
-if (isset($_GET['debug']) && $_GET['debug'] === '1') {
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+// Safe session directory fallback
+$sessPath = dirname(__DIR__) . '/storage/sessions';
+if (!is_dir($sessPath)) {
+    @mkdir($sessPath, 0775, true);
+}
+if (is_dir($sessPath) && is_writable($sessPath)) {
+    @session_save_path($sessPath);
+} elseif (is_writable(sys_get_temp_dir())) {
+    @session_save_path(sys_get_temp_dir());
 }
 
 // Start session securely
 if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
     @ini_set('session.cookie_httponly', 1);
     @ini_set('session.use_only_cookies', 1);
-    session_start();
+    @session_start();
+}
+
+// Enable error reporting and extension check if ?debug=1 is present
+if (isset($_GET['debug']) && $_GET['debug'] === '1') {
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    echo "<div style='background:#111;color:#fff;padding:15px;font-family:monospace;'>";
+    echo "<b>PHP Version:</b> " . PHP_VERSION . "<br>";
+    echo "<b>PDO Loaded:</b> " . (extension_loaded('pdo') ? 'YES' : 'NO') . "<br>";
+    echo "<b>PDO MySQL Loaded:</b> " . (extension_loaded('pdo_mysql') ? 'YES' : 'NO') . "<br>";
+    echo "<b>MySQLi Loaded:</b> " . (extension_loaded('mysqli') ? 'YES' : 'NO') . "<br>";
+    echo "<b>Session Path:</b> " . session_save_path() . "<br>";
+    echo "</div>";
 }
 
 // Database configuration (Auto-detects Local vs Production)

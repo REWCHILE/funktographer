@@ -1,3 +1,6 @@
+# Default Directory Index
+DirectoryIndex index.php index.html
+
 # Prevent directory browsing
 Options -Indexes
 

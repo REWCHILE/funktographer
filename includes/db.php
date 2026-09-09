@@ -1,6 +1,54 @@
 <?php
 require_once __DIR__ . '/config.php';
 
+// Check if PDO extension is enabled in PHP
+if (!class_exists('PDO') || (!extension_loaded('pdo_mysql') && !extension_loaded('pdo'))) {
+    http_response_code(500);
+    ?>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Extensión PDO Requerida — Funktographer</title>
+      <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #09090c; color: #f4f4f6; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 24px; box-sizing: border-box; }
+        .card { background: #13131a; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 36px; max-width: 620px; width: 100%; box-shadow: 0 15px 50px rgba(0,0,0,0.6); }
+        h2 { color: #FFC501; margin-top: 0; font-size: 1.6rem; }
+        .step-box { background: rgba(255,197,1,0.08); border-left: 4px solid #FFC501; padding: 14px 18px; margin: 18px 0; border-radius: 4px; font-size: 0.95rem; line-height: 1.6; }
+        p { color: #a1a1aa; line-height: 1.6; }
+        ol { color: #d4d4d8; line-height: 1.8; padding-left: 20px; }
+        ul { margin-top: 6px; }
+        code { background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; color: #FFC501; font-family: Consolas, monospace; }
+        .btn-retry { display: inline-block; margin-top: 15px; background: #FFC501; color: #000; padding: 10px 22px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+      </style>
+    </head>
+    <body>
+      <div class="card">
+        <h2>Falta activar la extensión PDO en cPanel</h2>
+        <p>PHP está ejecutándose en tu servidor, pero la extensión de base de datos <code>pdo_mysql</code> no está marcada en tu versión actual de PHP (<strong>PHP <?= PHP_VERSION ?></strong>).</p>
+        <div class="step-box">
+          <strong>Cómo activarlo en 30 segundos desde tu cPanel:</strong>
+          <ol>
+            <li>En tu cPanel busca y abre <strong>"Seleccionar Versión de PHP"</strong> (o <em>"Select PHP Version"</em>).</li>
+            <li>Haz clic en la pestaña <strong>"Extensiones"</strong> (<em>Extensions</em>).</li>
+            <li>Busca y marca con un visto bueno:
+              <ul>
+                <li>✅ <code>pdo</code></li>
+                <li>✅ <code>pdo_mysql</code> (o <code>nd_pdo_mysql</code>)</li>
+              </ul>
+            </li>
+            <li>Guarda y recarga esta página.</li>
+          </ol>
+        </div>
+        <a href="javascript:location.reload()" class="btn-retry">Recargar Página</a>
+      </div>
+    </body>
+    </html>
+    <?php
+    exit;
+}
+
 $hostsToTry = array_unique([DB_HOST, '127.0.0.1', 'localhost']);
 $pdo = null;
 $lastError = null;
