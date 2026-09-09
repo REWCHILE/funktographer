@@ -1,0 +1,38 @@
+# Prevent directory browsing
+Options -Indexes
+
+# UTF-8 encoding
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block access to sensitive directories and files
+    RewriteRule ^(database|includes)/ - [F,L]
+    RewriteRule \.(sql|env|json|log)$ - [F,L]
+
+    # Dynamic route: /proyecto/slug-del-proyecto -> proyecto.php?slug=slug-del-proyecto
+    RewriteRule ^proyecto/([a-zA-Z0-9_-]+)/?$ proyecto.php?slug=$1 [L,QSA]
+
+    # Dynamic route: /blog/slug-del-articulo -> blog-post.php?slug=slug-del-articulo
+    RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ blog-post.php?slug=$1 [L,QSA]
+
+    # Alias /bio -> links.php
+    RewriteRule ^bio/?$ links.php [L,QSA]
+
+    # Redirect /page.php to /page (canonical SEO 301 redirect only for GET requests)
+    RewriteCond %{REQUEST_METHOD} !=POST
+    RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
+    # Resolve extensionless URLs to .php files if they exist
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{DOCUMENT_ROOT}/$1.php -f [OR]
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.+?)/?$ $1.php [L,QSA]
+
+    # Serve directory index
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteCond %{REQUEST_FILENAME}/index.php -f
+    RewriteRule ^(.+?)/?$ $1/index.php [L,QSA]
+</IfModule>

@@ -1,0 +1,12 @@
+# Logs and Temporary files
+*.log
+*.tmp
+Thumbs.db
+.DS_Store
+
+# Editor configurations
+.vscode/
+.idea/
+
+# Environment files
+.env
