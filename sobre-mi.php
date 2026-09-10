@@ -3,7 +3,7 @@ require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
-$pageTitle = "Sobre Nosotros — La Visión de Funktographer";
+$pageTitle = "Sobre Mí — La Visión de Funktographer";
 $pageDescription = "Conoce la filosofía, enfoque y equipo técnico detrás de Funktographer. Fotografía profesional en Santiago de Chile.";
 
 include __DIR__ . '/includes/header.php';

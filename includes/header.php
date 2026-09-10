@@ -57,7 +57,7 @@ $pageDescription = isset($pageDescription) ? $pageDescription : $siteTagline;
             <a href="<?= BASE_URL ?>/blog" class="nav-link <?= (in_array($currentScript, ['blog.php', 'blog', 'blog-post.php'])) ? 'active' : '' ?>">Blog</a>
           </li>
           <li>
-            <a href="<?= BASE_URL ?>/nosotros" class="nav-link <?= (in_array($currentScript, ['nosotros.php', 'nosotros'])) ? 'active' : '' ?>">Nosotros</a>
+            <a href="<?= BASE_URL ?>/sobre-mi" class="nav-link <?= (in_array($currentScript, ['sobre-mi.php', 'sobre-mi'])) ? 'active' : '' ?>">Sobre Mí</a>
           </li>
           <li>
             <a href="<?= BASE_URL ?>/contacto" class="nav-link <?= (in_array($currentScript, ['contacto.php', 'contacto'])) ? 'active' : '' ?>">Contacto</a>
@@ -99,7 +99,7 @@ $pageDescription = isset($pageDescription) ? $pageDescription : $siteTagline;
         <li><a href="<?= BASE_URL ?>/">Inicio</a></li>
         <li><a href="<?= BASE_URL ?>/proyectos">Proyectos</a></li>
         <li><a href="<?= BASE_URL ?>/blog">Blog</a></li>
-        <li><a href="<?= BASE_URL ?>/nosotros">Nosotros</a></li>
+        <li><a href="<?= BASE_URL ?>/sobre-mi">Sobre Mí</a></li>
         <li><a href="<?= BASE_URL ?>/contacto">Contacto</a></li>
         <li><a href="<?= BASE_URL ?>/admin/login" style="color: var(--primary); font-size: 1.1rem;"><i class="fas fa-lock"></i> Acceso Admin</a></li>
       </ul>

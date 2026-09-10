@@ -28,7 +28,7 @@ $coverage = get_setting('coverage', 'Santiago de Chile / Cobertura Nacional e In
             <li><a href="<?= BASE_URL ?>/">Inicio</a></li>
             <li><a href="<?= BASE_URL ?>/proyectos">Proyectos</a></li>
             <li><a href="<?= BASE_URL ?>/blog">Blog &amp; Artículos</a></li>
-            <li><a href="<?= BASE_URL ?>/nosotros">Nosotros</a></li>
+            <li><a href="<?= BASE_URL ?>/sobre-mi">Sobre Mí</a></li>
             <li><a href="<?= BASE_URL ?>/contacto">Contacto</a></li>
           </ul>
         </div>
