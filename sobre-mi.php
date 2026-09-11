@@ -23,7 +23,7 @@ include __DIR__ . '/includes/header.php';
   <div class="hero-bg-glow"></div>
   <div class="container hero-content">
     <span class="section-tag">Sobre Mí</span>
-    <h1 class="hero-title">Emmanuel Ramírez &bull; <span class="highlight">Funktographer</span></h1>
+    <h1 class="hero-title">Emmanuel Ramírez y <span class="highlight">Funktographer</span></h1>
     <p class="hero-description">
       Fotógrafo y creador audiovisual con formación en publicidad y pasión por el funk, creando imágenes con estilo, ritmo y personalidad únicos.
     </p>
@@ -133,7 +133,7 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Gear & Quality Section -->
+<!-- Equipamiento y Calidad -->
 <section class="section">
   <div class="container">
     <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 50px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">

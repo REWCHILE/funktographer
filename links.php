@@ -93,11 +93,11 @@ $pageDescription = "Enlaces oficiales, redes sociales, contacto directo y portaf
       </h1>
       <div class="bio-handle">@funktographer</div>
       <p class="bio-tagline">
-        Fotografía &bull; Video &bull; Marketing Visual
+        Fotografía y Video | Marketing Visual
       </p>
 
       <div class="bio-location-chip">
-        <i class="fas fa-map-marker-alt"></i> Santiago de Chile &bull; Cobertura Global
+        <i class="fas fa-map-marker-alt"></i> Santiago de Chile | Cobertura Global
       </div>
     </div>
 
@@ -166,7 +166,7 @@ $pageDescription = "Enlaces oficiales, redes sociales, contacto directo y portaf
       <?php endforeach; ?>
     </nav>
 
-    <!-- Contact & Coverage Card (As Requested by User) -->
+    <!-- Contacto y Cobertura -->
     <section class="bio-contact-card" aria-labelledby="contactCardTitle">
       <div class="bio-contact-card-header">
         <div class="bio-contact-card-title" id="contactCardTitle">
@@ -214,7 +214,7 @@ $pageDescription = "Enlaces oficiales, redes sociales, contacto directo y portaf
           <span class="bio-contact-action" style="color: #60a5fa; border-color: rgba(96, 165, 250, 0.4);">Escribir</span>
         </a>
 
-        <!-- Base & Coverage -->
+        <!-- Base y Cobertura -->
         <div class="bio-contact-row" style="cursor: default;">
           <div class="bio-contact-icon icon-loc">
             <i class="fas fa-globe-americas"></i>

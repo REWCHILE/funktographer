@@ -288,7 +288,7 @@ require_once __DIR__ . '/header.php';
         </div>
       </div>
 
-      <!-- SEO & Meta Tags Card -->
+      <!-- Tarjeta de SEO y Meta Tags -->
       <div class="adm-card" style="margin-top: 24px;">
         <h3 class="adm-card-title" style="margin-bottom: 16px;">
           <i class="fab fa-google" style="color: var(--adm-primary); margin-right: 8px;"></i>

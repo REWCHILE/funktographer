@@ -57,7 +57,7 @@ include __DIR__ . '/includes/header.php';
 
     <div class="project-meta-badges">
       <span class="section-tag" style="margin-bottom: 0;">
-        <?= htmlspecialchars($project['category']) ?>
+        <?= htmlspecialchars(str_replace('&', 'y', $project['category'])) ?>
       </span>
       <?php if (!empty($project['client'])): ?>
         <span class="project-pill-info">
@@ -72,12 +72,12 @@ include __DIR__ . '/includes/header.php';
     </div>
 
     <h1 class="project-detail-title">
-      <?= htmlspecialchars($project['title']) ?>
+      <?= htmlspecialchars(str_replace('&', 'y', $project['title'])) ?>
     </h1>
   </div>
 </section>
 
-<!-- Project Narrative & Details -->
+<!-- Narrativa del Proyecto y Detalles -->
 <section class="section" style="padding-top: 50px; padding-bottom: 40px;">
   <div class="container">
     <div class="project-content-grid">
@@ -112,7 +112,7 @@ include __DIR__ . '/includes/header.php';
 
           <div class="project-spec-item">
             <span class="spec-label">Categoría</span>
-            <span class="spec-value" style="color: var(--primary); font-weight: 700;"><?= htmlspecialchars($project['category']) ?></span>
+            <span class="spec-value" style="color: var(--primary); font-weight: 700;"><?= htmlspecialchars(str_replace('&', 'y', $project['category'])) ?></span>
           </div>
 
           <?php if (!empty($project['client'])): ?>
@@ -176,7 +176,7 @@ include __DIR__ . '/includes/header.php';
   </section>
 <?php endif; ?>
 
-<!-- Dynamic Video Section & Extra Content (Optional) -->
+<!-- Seccion de Video y Contenido Extra (Opcional) -->
 <?php 
 $hasExtraTitle = !empty($project['extra_title']);
 $hasExtraContent = !empty($project['extra_content']);

@@ -87,7 +87,8 @@ include __DIR__ . '/includes/header.php';
       <div class="projects-grid">
         <?php foreach ($projects as $p): 
           $gallery = $projectImagesMap[$p['id']] ?? [];
-          $catName = $categoryMap[$p['category']] ?? $p['category'];
+          $catName = str_replace('&', 'y', $categoryMap[$p['category']] ?? $p['category']);
+          $cleanTitle = str_replace('&', 'y', $p['title']);
           $cleanDesc = trim(strip_tags($p['description'] ?? ''));
           if (mb_strlen($cleanDesc) > 160) {
               $cleanDesc = mb_substr($cleanDesc, 0, 157) . '...';
@@ -96,7 +97,7 @@ include __DIR__ . '/includes/header.php';
           <article class="project-card" id="proj-<?= $p['id'] ?>" data-category="<?= htmlspecialchars($p['category'] . ' ' . $catName) ?>">
             <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($p['slug']) ?>" class="project-thumb-wrap" style="display: block;">
               <img src="<?= BASE_URL ?>/<?= htmlspecialchars($p['cover_image']) ?>" 
-                   alt="<?= htmlspecialchars($p['title']) ?>" 
+                   alt="<?= htmlspecialchars($cleanTitle) ?>" 
                    class="project-thumb" 
                    loading="lazy">
               <span class="project-meta-pill"><?= htmlspecialchars($catName) ?></span>
@@ -106,13 +107,13 @@ include __DIR__ . '/includes/header.php';
               <div class="project-date">
                 <i class="far fa-calendar-alt"></i> <?= htmlspecialchars($p['event_date'] ?: 'Reciente') ?>
                 <?php if ($p['client']): ?>
-                  &bull; <i class="far fa-building"></i> <?= htmlspecialchars($p['client']) ?>
+                  | <i class="far fa-building"></i> <?= htmlspecialchars($p['client']) ?>
                 <?php endif; ?>
               </div>
 
               <h2 class="project-card-title">
                 <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($p['slug']) ?>" style="color: inherit;">
-                  <?= htmlspecialchars($p['title']) ?>
+                  <?= htmlspecialchars($cleanTitle) ?>
                 </a>
               </h2>
               <p class="project-card-desc"><?= htmlspecialchars($cleanDesc) ?></p>

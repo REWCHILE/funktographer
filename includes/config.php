@@ -54,7 +54,7 @@ if ($isLocalEnv) {
     define('DB_CHARSET', 'utf8mb4');
 }
 
-// Paths & URLs
+// Rutas y URLs
 define('ROOT_PATH', dirname(__DIR__));
 define('UPLOADS_PATH', ROOT_PATH . '/uploads');
 

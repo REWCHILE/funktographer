@@ -60,7 +60,7 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Contact Form & Details Layout -->
+<!-- Formulario de Contacto y Detalles -->
 <section class="section" style="padding-top: 20px;">
   <div class="container">
     <div class="contact-layout">
@@ -121,7 +121,7 @@ include __DIR__ . '/includes/header.php';
           <div class="contact-info-content">
             <h6>Base y Cobertura</h6>
             <p style="margin: 0; color: #fff; font-size: 1rem;">
-              Santiago de Chile &bull; Cobertura Nacional e Internacional
+              Santiago de Chile | Cobertura Nacional e Internacional
             </p>
           </div>
         </div>

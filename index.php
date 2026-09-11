@@ -47,7 +47,7 @@ include __DIR__ . '/includes/header.php';
   <div class="hero-bg-glow"></div>
   <div class="container hero-content">
     <div class="hero-badge">
-      <span class="hero-badge-dot"></span> Santiago de Chile &bull; Cobertura Nacional e Internacional
+      <span class="hero-badge-dot"></span> Santiago de Chile | Cobertura Nacional e Internacional
     </div>
     <h1 class="hero-title">
       Fotografía y video para <span class="highlight">empresas y marcas</span>

@@ -89,10 +89,10 @@ $shareTitle = urlencode($post['title'] . ' — Funktographer');
       </div>
     </div>
 
-    <!-- Category & Meta Tags -->
+    <!-- Categoria y Meta Tags -->
     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap;">
       <span class="blog-category-tag">
-        <?= htmlspecialchars($post['category_name'] ?: $post['category']) ?>
+        <?= htmlspecialchars(str_replace('&', 'y', $post['category_name'] ?: $post['category'])) ?>
       </span>
       <?php if ($post['is_featured']): ?>
         <span style="background: rgba(255, 197, 1, 0.2); color: #FFC501; font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px;">
@@ -108,7 +108,7 @@ $shareTitle = urlencode($post['title'] . ' — Funktographer');
 
     <!-- Main Title -->
     <h1 style="font-size: clamp(2rem, 4vw, 3.2rem); font-family: var(--font-title); color: #fff; line-height: 1.2; margin-bottom: 20px; font-weight: normal; letter-spacing: 0.5px;">
-      <?= htmlspecialchars($post['title']) ?>
+      <?= htmlspecialchars(str_replace('&', 'y', $post['title'])) ?>
     </h1>
 
     <!-- Excerpt / Subtitle -->
@@ -118,7 +118,7 @@ $shareTitle = urlencode($post['title'] . ' — Funktographer');
       </p>
     <?php endif; ?>
 
-    <!-- Author & Reading Stats Bar -->
+    <!-- Autor y Barra de Lectura -->
     <div class="blog-meta-bar" style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 16px 0; margin-bottom: 34px; flex-wrap: wrap; gap: 16px;">
       <div style="display: flex; align-items: center; gap: 12px;">
         <img src="<?= BASE_URL ?>/assets/img/logo-circular.png" alt="Manuel" style="width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--primary); object-fit: contain; background: #0e0e15;">
@@ -181,7 +181,7 @@ $shareTitle = urlencode($post['title'] . ' — Funktographer');
       </div>
     </div>
 
-    <!-- Author Bio & Direct WhatsApp Conversion Box -->
+    <!-- Bio del Autor y Contacto WhatsApp -->
     <div class="blog-author-card" style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, rgba(121, 56, 226, 0.12) 0%, rgba(255, 197, 1, 0.08) 100%); border: 1px solid rgba(255, 197, 1, 0.3); border-radius: 14px; display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
       <img src="<?= BASE_URL ?>/assets/img/logo-circular.png" alt="Manuel" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--primary); object-fit: contain; background: #0f0f18; flex-shrink: 0;">
       <div style="flex: 1; min-width: 260px;">

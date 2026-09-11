@@ -67,9 +67,11 @@ include __DIR__ . '/includes/header.php';
     <!-- Category Filter Pills -->
     <div class="filter-container">
       <button type="button" class="filter-btn active" data-filter="all">Todos los Artículos</button>
-      <?php foreach ($categories as $cat): ?>
-        <button type="button" class="filter-btn" data-filter="<?= htmlspecialchars($cat['name']) ?>">
-          <?= htmlspecialchars($cat['name']) ?>
+      <?php foreach ($categories as $cat): 
+        $catDisplayName = str_replace('&', 'y', $cat['name']);
+      ?>
+        <button type="button" class="filter-btn" data-filter="<?= htmlspecialchars($catDisplayName) ?>">
+          <?= htmlspecialchars($catDisplayName) ?>
         </button>
       <?php endforeach; ?>
     </div>
@@ -81,15 +83,18 @@ include __DIR__ . '/includes/header.php';
   <div class="container">
 
     <!-- Featured Post Hero Showcase -->
-    <?php if ($featuredPost): ?>
-      <div class="blog-featured-card" data-category="<?= htmlspecialchars($featuredPost['category_name'] ?: $featuredPost['category']) ?>">
+    <?php if ($featuredPost): 
+      $featCat = str_replace('&', 'y', $featuredPost['category_name'] ?: $featuredPost['category']);
+      $featTitle = str_replace('&', 'y', $featuredPost['title']);
+    ?>
+      <div class="blog-featured-card" data-category="<?= htmlspecialchars($featCat) ?>">
         <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($featuredPost['slug']) ?>" class="featured-thumb-wrap">
-          <img src="<?= BASE_URL ?>/<?= htmlspecialchars($featuredPost['cover_image']) ?>" alt="<?= htmlspecialchars($featuredPost['title']) ?>" class="featured-thumb">
+          <img src="<?= BASE_URL ?>/<?= htmlspecialchars($featuredPost['cover_image']) ?>" alt="<?= htmlspecialchars($featTitle) ?>" class="featured-thumb">
           <span class="featured-badge"><i class="fas fa-star"></i> Destacado</span>
         </a>
         <div class="featured-body">
           <div class="blog-post-meta">
-            <span class="blog-category-tag"><?= htmlspecialchars($featuredPost['category_name'] ?: $featuredPost['category']) ?></span>
+            <span class="blog-category-tag"><?= htmlspecialchars($featCat) ?></span>
             <span class="meta-sep">&bull;</span>
             <span><i class="far fa-calendar-alt"></i> <?= date('d M, Y', strtotime($featuredPost['published_at'])) ?></span>
             <span class="meta-sep">&bull;</span>
@@ -98,7 +103,7 @@ include __DIR__ . '/includes/header.php';
 
           <h2 class="featured-title">
             <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($featuredPost['slug']) ?>">
-              <?= htmlspecialchars($featuredPost['title']) ?>
+              <?= htmlspecialchars($featTitle) ?>
             </a>
           </h2>
 
@@ -121,11 +126,14 @@ include __DIR__ . '/includes/header.php';
 
     <!-- Regular Posts Grid -->
     <div class="blog-grid" id="blogGrid">
-      <?php foreach ($regularPosts as $post): ?>
-        <article class="blog-card" data-category="<?= htmlspecialchars($post['category_name'] ?: $post['category']) ?>" data-title="<?= htmlspecialchars(strtolower($post['title'])) ?>" data-excerpt="<?= htmlspecialchars(strtolower($post['excerpt'] ?? '')) ?>">
+      <?php foreach ($regularPosts as $post): 
+        $postCat = str_replace('&', 'y', $post['category_name'] ?: $post['category']);
+        $postTitle = str_replace('&', 'y', $post['title']);
+      ?>
+        <article class="blog-card" data-category="<?= htmlspecialchars($postCat) ?>" data-title="<?= htmlspecialchars(strtolower($postTitle)) ?>" data-excerpt="<?= htmlspecialchars(strtolower($post['excerpt'] ?? '')) ?>">
           <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($post['slug']) ?>" class="blog-card-thumb-wrap">
-            <img src="<?= BASE_URL ?>/<?= htmlspecialchars($post['cover_image']) ?>" alt="<?= htmlspecialchars($post['title']) ?>" class="blog-card-thumb" loading="lazy">
-            <span class="blog-card-category"><?= htmlspecialchars($post['category_name'] ?: $post['category']) ?></span>
+            <img src="<?= BASE_URL ?>/<?= htmlspecialchars($post['cover_image']) ?>" alt="<?= htmlspecialchars($postTitle) ?>" class="blog-card-thumb" loading="lazy">
+            <span class="blog-card-category"><?= htmlspecialchars($postCat) ?></span>
           </a>
 
           <div class="blog-card-body">
@@ -137,7 +145,7 @@ include __DIR__ . '/includes/header.php';
 
             <h3 class="blog-card-title">
               <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($post['slug']) ?>">
-                <?= htmlspecialchars($post['title']) ?>
+                <?= htmlspecialchars($postTitle) ?>
               </a>
             </h3>
 

@@ -308,7 +308,7 @@ require_once __DIR__ . '/header.php';
         </div>
       </div>
 
-      <!-- Secondary Section & Optional Video -->
+      <!-- Seccion Secundaria y Video Opcional -->
       <div class="adm-card" style="margin-top: 24px;">
         <h3 class="adm-card-title" style="margin-bottom: 20px;">
           <i class="fas fa-video" style="color: var(--adm-primary); margin-right: 8px;"></i>
