@@ -75,10 +75,10 @@ include __DIR__ . '/includes/header.php';
 
       <div class="about-img-grid">
         <div class="about-img-main">
-          <img src="<?= BASE_URL ?>/uploads/sobre-mi/emmanuel-ramirez-portrait.jpg" alt="Emmanuel Ramírez - Funktographer" width="600" height="750" loading="lazy">
+          <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url('uploads/sobre-mi/emmanuel-ramirez-portrait.jpg')) ?>" alt="Emmanuel Ramírez - Funktographer" width="600" height="750" loading="lazy" decoding="async">
         </div>
         <div class="about-img-float">
-          <img src="<?= BASE_URL ?>/uploads/sobre-mi/emmanuel-ramirez-guitar.jpg" alt="Emmanuel Ramírez - Creador visual" width="300" height="375" loading="lazy">
+          <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url('uploads/sobre-mi/emmanuel-ramirez-guitar.jpg')) ?>" alt="Emmanuel Ramírez - Creador visual" width="300" height="375" loading="lazy" decoding="async">
         </div>
       </div>
     </div>

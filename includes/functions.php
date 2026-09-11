@@ -24,6 +24,19 @@ function get_setting($key, $default = '') {
 }
 
 /**
+ * Get optimized WebP image URL if it exists on disk, otherwise return original
+ */
+function img_url($path) {
+    if (empty($path)) return $path;
+    $cleanPath = ltrim((string)$path, '/');
+    $webpPath = preg_replace('/\.(jpe?g|png)$/i', '.webp', $cleanPath);
+    if (file_exists(__DIR__ . '/../' . $webpPath)) {
+        return $webpPath;
+    }
+    return $cleanPath;
+}
+
+/**
  * Clean and sanitize string input
  */
 function sanitize($input) {

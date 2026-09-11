@@ -90,7 +90,7 @@ include __DIR__ . '/includes/header.php';
     ?>
       <div class="blog-featured-card" data-category="<?= htmlspecialchars($featCat) ?>">
         <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($featuredPost['slug']) ?>" class="featured-thumb-wrap">
-          <img src="<?= BASE_URL ?>/<?= htmlspecialchars($featuredPost['cover_image']) ?>" alt="<?= htmlspecialchars($featTitle) ?>" class="featured-thumb" width="800" height="450" loading="lazy">
+          <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($featuredPost['cover_image'])) ?>" alt="<?= htmlspecialchars($featTitle) ?>" class="featured-thumb" width="800" height="450" loading="lazy" decoding="async">
           <span class="featured-badge"><i class="fas fa-star"></i> Destacado</span>
         </a>
         <div class="featured-body">
@@ -133,7 +133,7 @@ include __DIR__ . '/includes/header.php';
       ?>
         <article class="blog-card" data-category="<?= htmlspecialchars($postCat) ?>" data-title="<?= htmlspecialchars(strtolower($postTitle)) ?>" data-excerpt="<?= htmlspecialchars(strtolower($post['excerpt'] ?? '')) ?>">
           <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($post['slug']) ?>" class="blog-card-thumb-wrap">
-            <img src="<?= BASE_URL ?>/<?= htmlspecialchars($post['cover_image']) ?>" alt="<?= htmlspecialchars($postTitle) ?>" class="blog-card-thumb" width="400" height="250" loading="lazy">
+            <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($post['cover_image'])) ?>" alt="<?= htmlspecialchars($postTitle) ?>" class="blog-card-thumb" width="400" height="250" loading="lazy" decoding="async">
             <span class="blog-card-category"><?= htmlspecialchars($postCat) ?></span>
           </a>
 

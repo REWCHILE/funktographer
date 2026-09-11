@@ -158,13 +158,14 @@ include __DIR__ . '/includes/header.php';
       <div class="gallery-grid">
         <?php foreach ($gallery as $g): ?>
           <div class="gallery-item" 
-               data-full-src="<?= BASE_URL ?>/<?= htmlspecialchars($g['image_url']) ?>" 
+               data-full-src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($g['image_url'])) ?>" 
                data-title="<?= htmlspecialchars($project['title']) ?> — <?= htmlspecialchars($g['caption'] ?: $project['category']) ?>">
-            <img src="<?= BASE_URL ?>/<?= htmlspecialchars($g['image_url']) ?>" 
+            <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($g['image_url'])) ?>" 
                  alt="<?= htmlspecialchars($g['caption'] ?: $project['title']) ?>" 
                  width="600"
                  height="600"
-                 loading="lazy">
+                 loading="lazy"
+                 decoding="async">
             <div class="gallery-overlay">
               <div class="gallery-info">
                 <span class="gallery-cat"><?= htmlspecialchars($project['category']) ?></span>
@@ -259,7 +260,7 @@ if ($hasExtraTitle || $hasExtraContent || $ytEmbedUrl || $hasVideoFile):
         <?php foreach ($otherProjects as $op): ?>
           <article class="project-card">
             <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($op['slug']) ?>" class="project-thumb-wrap" style="display: block;">
-              <img src="<?= BASE_URL ?>/<?= htmlspecialchars($op['cover_image']) ?>" alt="<?= htmlspecialchars($op['title']) ?>" class="project-thumb" width="634" height="422" loading="lazy">
+              <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($op['cover_image'])) ?>" alt="<?= htmlspecialchars($op['title']) ?>" class="project-thumb" width="634" height="422" loading="lazy" decoding="async">
               <span class="project-meta-pill"><?= htmlspecialchars($op['category']) ?></span>
             </a>
             <div class="project-card-body">

@@ -91,13 +91,14 @@ include __DIR__ . '/includes/header.php';
       <?php foreach ($homeImages as $img): ?>
         <div class="gallery-item" 
              data-category="<?= htmlspecialchars($img['category']) ?>"
-             data-full-src="<?= BASE_URL ?>/<?= htmlspecialchars($img['image_url']) ?>"
+             data-full-src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($img['image_url'])) ?>"
              data-title="<?= htmlspecialchars($img['title']) ?>">
-          <img src="<?= BASE_URL ?>/<?= htmlspecialchars($img['image_url']) ?>" 
+          <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($img['image_url'])) ?>" 
                alt="<?= htmlspecialchars($img['title']) ?>" 
-               width="600"
-               height="600"
-               loading="lazy">
+               width="600" 
+               height="600" 
+               loading="lazy"
+               decoding="async">
           <div class="gallery-overlay">
             <span class="gallery-badge"><?= htmlspecialchars($img['category']) ?></span>
             <div class="gallery-title"><?= htmlspecialchars($img['title']) ?></div>
@@ -175,12 +176,13 @@ include __DIR__ . '/includes/header.php';
       <?php foreach ($featuredProjects as $proj): ?>
         <article class="project-card" data-category="<?= htmlspecialchars($proj['category']) ?>">
           <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($proj['slug']) ?>" class="project-thumb-wrap" style="display: block;">
-            <img src="<?= BASE_URL ?>/<?= htmlspecialchars($proj['cover_image']) ?>" 
+            <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($proj['cover_image'])) ?>" 
                  alt="<?= htmlspecialchars($proj['title']) ?>" 
                  class="project-thumb" 
                  width="634"
                  height="422"
-                 loading="lazy">
+                 loading="lazy"
+                 decoding="async">
             <span class="project-meta-pill"><?= htmlspecialchars($proj['category']) ?></span>
           </a>
           <div class="project-card-body">
@@ -220,7 +222,7 @@ include __DIR__ . '/includes/header.php';
     foreach ($loopRibbon as $r):
     ?>
       <div class="marquee-item">
-        <img src="<?= BASE_URL ?>/<?= htmlspecialchars($r['image_url']) ?>" alt="<?= htmlspecialchars($r['title']) ?>" width="300" height="300" loading="lazy">
+        <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($r['image_url'])) ?>" alt="<?= htmlspecialchars($r['title']) ?>" width="300" height="300" loading="lazy" decoding="async">
       </div>
     <?php endforeach; ?>
   </div>
