@@ -338,7 +338,7 @@ require_once __DIR__ . '/header.php';
       <div class="adm-card">
         <h3 class="adm-card-title" style="margin-bottom: 20px;">
           <i class="fas fa-paper-plane" style="color: var(--adm-primary); margin-right: 8px;"></i>
-          Publicación &amp; Parámetros
+          Publicación y Parámetros
         </h3>
 
         <!-- Status -->

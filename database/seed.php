@@ -106,7 +106,7 @@ $projectsData = [
         ]
     ],
     [
-        'title' => 'Carta Visual Gourmet: D’Gang & Pine Cone',
+        'title' => 'Carta Visual Gourmet: D’Gang y Pine Cone',
         'slug' => 'carta-visual-dgang-pinecone',
         'category' => 'Gastronomia',
         'client' => 'D’Gang / Pastelería Pine Cone',
@@ -124,7 +124,7 @@ $projectsData = [
         ]
     ],
     [
-        'title' => 'Editorial de Retrato & Moda Urbana',
+        'title' => 'Editorial de Retrato y Moda Urbana',
         'slug' => 'editorial-retrato-moda-urbana',
         'category' => 'Retratos',
         'client' => 'Editorial Independiente / Modelos',

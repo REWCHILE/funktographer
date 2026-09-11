@@ -45,7 +45,7 @@ $projects = $pdo->query($sql)->fetchAll();
 
 <div class="adm-header">
   <div>
-    <h1 class="adm-title">Proyectos &amp; Coberturas</h1>
+    <h1 class="adm-title">Proyectos y Coberturas</h1>
     <p class="adm-subtitle">Crea, edita y organiza los proyectos mostrados en el catálogo</p>
   </div>
   <a href="<?= BASE_URL ?>/admin/project-form" class="adm-btn adm-btn-primary">

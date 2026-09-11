@@ -3,8 +3,11 @@ require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
-$pageTitle = "Sobre Mí — La Visión de Funktographer";
-$pageDescription = "Conoce la filosofía, enfoque y equipo técnico detrás de Funktographer. Fotografía profesional en Santiago de Chile.";
+$pageTitle = "Sobre Mí — Emmanuel Ramírez | Funktographer";
+$pageDescription = "Soy Emmanuel Ramírez, la persona detrás de Funktographer. Fotógrafo y creador audiovisual con formación en publicidad y pasión por el funk.";
+$pageImage = 'uploads/sobre-mi/emmanuel-ramirez-portrait.jpg';
+$ogType = 'profile';
+$pageCanonical = BASE_URL . '/sobre-mi';
 
 include __DIR__ . '/includes/header.php';
 ?>
@@ -19,10 +22,10 @@ include __DIR__ . '/includes/header.php';
   </div>
   <div class="hero-bg-glow"></div>
   <div class="container hero-content">
-    <span class="section-tag">Nuestra Identidad</span>
-    <h1 class="hero-title">Narrativa Visual con <span class="highlight">Fuerza &amp; Precisión</span></h1>
+    <span class="section-tag">Sobre Mí</span>
+    <h1 class="hero-title">Emmanuel Ramírez &bull; <span class="highlight">Funktographer</span></h1>
     <p class="hero-description">
-      En <strong>Funktographer</strong> entendemos la fotografía no como un simple registro estático, sino como un puente emocional que comunica la grandeza de cada ocasión y cada producto.
+      Fotógrafo y creador audiovisual con formación en publicidad y pasión por el funk, creando imágenes con estilo, ritmo y personalidad únicos.
     </p>
   </div>
 </section>
@@ -32,37 +35,49 @@ include __DIR__ . '/includes/header.php';
   <div class="container">
     <div class="about-hero">
       <div class="about-text-content">
-        <span class="section-tag">Filosofía</span>
-        <h2 class="section-title" style="text-align: left;">Capturamos la Energía Invisible</h2>
-        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; line-height: 1.7;">
-          Detrás de cada evento corporativo hay meses de preparación, visión y liderazgo. Detrás de cada plato gastronómico hay arte, textura y pasión culinaria. Y detrás de cada retrato hay una personalidad única esperando ser revelada.
-        </p>
-        <p style="color: var(--text-muted); margin-bottom: 28px; font-size: 1.05rem; line-height: 1.7;">
-          Nuestra misión es inmortalizar esos elementos efímeros con una mirada cinematográfica, cuidando meticulosamente la luz, el encuadre y el ritmo visual para entregar material publicitario y documental que destaque a nuestros clientes en cualquier medio.
+        <span class="section-tag">La Persona Detrás del Lente</span>
+        <h2 class="section-title" style="text-align: left;">Creatividad, Ritmo y Enfoque Publicitario</h2>
+        
+        <p style="color: var(--text-main); margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8; font-weight: 500;">
+          Soy Emmanuel Ramírez, la persona detrás de Funktographer. Soy fotógrafo y creador audiovisual con formación en publicidad y pasión por el funk, la música que inspiró el nombre de mi marca. Combino estas influencias para crear imágenes con estilo, ritmo y personalidad únicos.
         </p>
 
-        <div style="display: flex; gap: 30px; margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 24px;">
+        <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; line-height: 1.8;">
+          Mi trabajo une conceptualización, manejo de la luz y dirección visual. Antes de tomar la cámara, busco entender qué necesitas comunicar y cómo utilizarás las imágenes.
+        </p>
+
+        <p style="color: var(--text-muted); margin-bottom: 26px; font-size: 1.05rem; line-height: 1.8;">
+          He desarrollado proyectos en Venezuela, Colombia, Ecuador, Perú y Chile. Hoy, desde Santiago, realizo fotografía y video corporativo, comercial y gastronómico, además de retratos, con una mirada cercana y atención al detalle.
+        </p>
+
+        <div style="background: rgba(79, 44, 163, 0.18); border-left: 4px solid var(--primary); padding: 18px 24px; border-radius: 0 14px 14px 0; margin-bottom: 30px;">
+          <p style="font-family: var(--font-subtitle); color: var(--primary); font-size: 1.25rem; font-weight: normal; margin: 0; letter-spacing: 0.3px; line-height: 1.4;">
+            &ldquo;Cuéntame tu idea. Construyamos juntos su expresión visual.&rdquo;
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 30px; margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 24px;">
           <div>
-            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: #fff;">+10</div>
-            <div style="color: var(--text-dim); font-size: 0.88rem; font-weight: 600;">Años de Trayectoria</div>
+            <div style="font-family: var(--font-title); font-size: 2.4rem; font-weight: normal; color: #fff;">+10</div>
+            <div style="font-family: var(--font-subtitle); color: var(--text-dim); font-size: 0.88rem; font-weight: normal; letter-spacing: 0.3px;">Años de Trayectoria</div>
           </div>
           <div>
-            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--primary);">+300</div>
-            <div style="color: var(--text-dim); font-size: 0.88rem; font-weight: 600;">Eventos &amp; Sesiones</div>
+            <div style="font-family: var(--font-title); font-size: 2.4rem; font-weight: normal; color: var(--primary);">5</div>
+            <div style="font-family: var(--font-subtitle); color: var(--text-dim); font-size: 0.88rem; font-weight: normal; letter-spacing: 0.3px;">Países con Proyectos</div>
           </div>
           <div>
-            <div style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--accent);">100%</div>
-            <div style="color: var(--text-dim); font-size: 0.88rem; font-weight: 600;">Compromiso Visual</div>
+            <div style="font-family: var(--font-title); font-size: 2.4rem; font-weight: normal; color: var(--accent);">100%</div>
+            <div style="font-family: var(--font-subtitle); color: var(--text-dim); font-size: 0.88rem; font-weight: normal; letter-spacing: 0.3px;">Compromiso y Ritmo</div>
           </div>
         </div>
       </div>
 
       <div class="about-img-grid">
         <div class="about-img-main">
-          <img src="<?= BASE_URL ?>/uploads/home/Foto-evento-Algo-electrico-con-quimica-Funktographer-24.jpg" alt="Cobertura en terreno Funktographer">
+          <img src="<?= BASE_URL ?>/uploads/sobre-mi/emmanuel-ramirez-portrait.jpg" alt="Emmanuel Ramírez - Funktographer">
         </div>
         <div class="about-img-float">
-          <img src="<?= BASE_URL ?>/uploads/home/Retrato-modelo-genesis-6-Funktographer.jpg" alt="Retrato y detalle">
+          <img src="<?= BASE_URL ?>/uploads/sobre-mi/emmanuel-ramirez-guitar.jpg" alt="Emmanuel Ramírez - Creador visual">
         </div>
       </div>
     </div>
@@ -70,7 +85,7 @@ include __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Services / Specialities Section -->
-<section class="section" style="background: #0d0d12; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+<section class="section" style="background: var(--bg-surface); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
   <div class="container">
     <div class="section-title-wrap">
       <span class="section-tag">Lo Que Hacemos</span>
@@ -81,8 +96,8 @@ include __DIR__ . '/includes/header.php';
     <div class="services-grid">
       <!-- Service 1 -->
       <div class="service-card">
-        <div class="service-num">01</div>
-        <h4>Eventos Corporativos &amp; Congresos</h4>
+        <div class="service-num" style="color: var(--primary);">01</div>
+        <h4>Eventos Corporativos y Congresos</h4>
         <p>
           Cobertura discreta y dinámica para convenciones, foros empresariales, lanzamientos de productos y aniversarios. Entrega ágil para prensa y redes.
         </p>
@@ -90,8 +105,8 @@ include __DIR__ . '/includes/header.php';
 
       <!-- Service 2 -->
       <div class="service-card">
-        <div class="service-num">02</div>
-        <h4>Fotografía Gastronómica &amp; Bebidas</h4>
+        <div class="service-num" style="color: var(--primary);">02</div>
+        <h4>Fotografía Gastronómica y Bebidas</h4>
         <p>
           Estilismo culinario e iluminación controlada para restaurantes, pastelerías y marcas de autor. Platos que despiertan el apetito a través de la pantalla.
         </p>
@@ -99,8 +114,8 @@ include __DIR__ . '/includes/header.php';
 
       <!-- Service 3 -->
       <div class="service-card">
-        <div class="service-num">03</div>
-        <h4>Retrato Editorial &amp; Corporativo</h4>
+        <div class="service-num" style="color: var(--primary);">03</div>
+        <h4>Retrato Editorial y Corporativo</h4>
         <p>
           Headshots para directores ejecutivos, equipos de trabajo, modelos y artistas. Dirección de poses natural y retoque de piel de alta fidelidad.
         </p>
@@ -108,8 +123,8 @@ include __DIR__ . '/includes/header.php';
 
       <!-- Service 4 -->
       <div class="service-card">
-        <div class="service-num">04</div>
-        <h4>Producción Audiovisual &amp; Video</h4>
+        <div class="service-num" style="color: var(--primary);">04</div>
+        <h4>Producción Audiovisual y Video</h4>
         <p>
           Cápsulas en video 4K, reels dinámicos para Instagram/TikTok y aftermovies de eventos con edición rítmica y corrección de color profesional.
         </p>
@@ -124,7 +139,7 @@ include __DIR__ . '/includes/header.php';
     <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 50px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
       <div>
         <span class="section-tag">Tecnología de Vanguardia</span>
-        <h3 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin-bottom: 18px; line-height: 1.2;">
+        <h3 style="font-family: var(--font-title); font-size: 2.2rem; font-weight: normal; color: #fff; margin-bottom: 18px; line-height: 1.2;">
           Equipamiento de Máxima Definición
         </h3>
         <p style="color: var(--text-muted); margin-bottom: 20px; line-height: 1.6;">

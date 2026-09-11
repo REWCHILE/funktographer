@@ -60,6 +60,9 @@ $relatedPosts = $stmtRelated->fetchAll();
 // SEO Meta
 $pageTitle = !empty($post['meta_title']) ? $post['meta_title'] : $post['title'];
 $pageDescription = !empty($post['meta_description']) ? $post['meta_description'] : (!empty($post['excerpt']) ? $post['excerpt'] : substr(strip_tags($post['content']), 0, 160));
+$pageImage = $post['cover_image'];
+$ogType = 'article';
+$pageCanonical = BASE_URL . '/blog/' . urlencode($post['slug']);
 
 include __DIR__ . '/includes/header.php';
 
@@ -104,7 +107,7 @@ $shareTitle = urlencode($post['title'] . ' — Funktographer');
     </div>
 
     <!-- Main Title -->
-    <h1 style="font-size: clamp(2rem, 4vw, 3.2rem); font-family: var(--font-heading); color: #fff; line-height: 1.25; margin-bottom: 20px; font-weight: 800;">
+    <h1 style="font-size: clamp(2rem, 4vw, 3.2rem); font-family: var(--font-title); color: #fff; line-height: 1.2; margin-bottom: 20px; font-weight: normal; letter-spacing: 0.5px;">
       <?= htmlspecialchars($post['title']) ?>
     </h1>
 
@@ -121,7 +124,7 @@ $shareTitle = urlencode($post['title'] . ' — Funktographer');
         <img src="<?= BASE_URL ?>/assets/img/logo-circular.png" alt="Manuel" style="width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--primary); object-fit: contain; background: #0e0e15;">
         <div>
           <div style="font-weight: 700; color: #fff; font-size: 0.95rem;"><?= htmlspecialchars($post['author']) ?></div>
-          <div style="font-size: 0.8rem; color: var(--text-dim);">Fotógrafo &amp; Realizador Audiovisual</div>
+          <div style="font-size: 0.8rem; color: var(--text-dim);">Fotógrafo y Realizador Audiovisual</div>
         </div>
       </div>
 
@@ -198,12 +201,12 @@ $shareTitle = urlencode($post['title'] . ' — Funktographer');
 
 <!-- Related Articles Section -->
 <?php if (!empty($relatedPosts)): ?>
-  <section class="section" style="background: rgba(14, 14, 20, 0.5); border-top: 1px solid var(--border-color); padding: 60px 0;">
+  <section class="section" style="background: rgba(18, 8, 38, 0.6); border-top: 1px solid var(--border-color); padding: 60px 0;">
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 36px; flex-wrap: wrap; gap: 16px;">
         <div>
           <span class="section-tag">Continúa Leyendo</span>
-          <h2 style="font-size: 2rem; font-family: var(--font-heading); color: #fff; margin-bottom: 0;">
+          <h2 style="font-size: 2.2rem; font-family: var(--font-title); font-weight: normal; color: #fff; margin-bottom: 0; letter-spacing: 0.5px;">
             Artículos Relacionados
           </h2>
         </div>

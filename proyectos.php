@@ -3,12 +3,34 @@ require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
-$pageTitle = "Proyectos & Portafolio Fotográfico";
-$pageDescription = "Explora nuestros proyectos fotográficos corporativos, gastronómicos y sesiones de retrato profesional realizados en Chile.";
+$pageTitle = "Proyectos y Portafolio Fotográfico";
+$pageDescription = "Explora los proyectos fotográficos y audiovisuales de Funktographer: eventos corporativos, gastronomía de autor y retratos editoriales.";
+$pageImage = 'uploads/home/Fotogo-Ponencia-cisco-mining-summit-2024-Funktographer.jpg';
+$ogType = 'website';
+$pageCanonical = BASE_URL . '/proyectos';
 
-// Fetch projects with their sub-images
-$stmt = $pdo->query("SELECT * FROM projects ORDER BY display_order ASC, id DESC");
-$projects = $stmt->fetchAll();
+// Fetch active dynamic categories ordered by display_order
+try {
+    $catStmt = $pdo ? $pdo->query("SELECT * FROM categories WHERE is_active = 1 ORDER BY display_order ASC, id ASC") : null;
+    $categories = $catStmt ? $catStmt->fetchAll() : [];
+} catch (Exception $e) {
+    $categories = [];
+}
+
+// Category map for pretty display and filter matching
+$categoryMap = [];
+foreach ($categories as $cat) {
+    $categoryMap[$cat['slug']] = $cat['name'];
+    $categoryMap[$cat['name']] = $cat['name'];
+}
+
+// Fetch all projects
+try {
+    $stmt = $pdo ? $pdo->query("SELECT * FROM projects ORDER BY display_order ASC, id DESC") : null;
+    $projects = $stmt ? $stmt->fetchAll() : [];
+} catch (Exception $e) {
+    $projects = [];
+}
 
 // Attach images to each project
 $projectIds = array_column($projects, 'id');
@@ -20,9 +42,6 @@ if (!empty($projectIds)) {
         $projectImagesMap[$row['project_id']][] = $row;
     }
 }
-
-// Fetch dynamic categories ordered by display_order for filter pills
-$categories = $pdo->query("SELECT * FROM categories WHERE is_active = 1 ORDER BY display_order ASC, id ASC")->fetchAll();
 
 include __DIR__ . '/includes/header.php';
 ?>
@@ -38,7 +57,7 @@ include __DIR__ . '/includes/header.php';
   <div class="hero-bg-glow"></div>
   <div class="container hero-content">
     <span class="section-tag">Portafolio Profesional</span>
-    <h1 class="hero-title">Proyectos &amp; Coberturas</h1>
+    <h1 class="hero-title">Proyectos y Coberturas</h1>
     <p class="hero-description">
       Cada proyecto es un relato único. Conoce cómo transformamos eventos corporativos, creaciones culinarias y sesiones editoriales en piezas visuales de alto impacto.
     </p>
@@ -58,33 +77,45 @@ include __DIR__ . '/includes/header.php';
 <!-- Projects Grid -->
 <section class="section" style="padding-top: 0;">
   <div class="container">
-    <div class="projects-grid">
-      <?php foreach ($projects as $p): 
-        $gallery = $projectImagesMap[$p['id']] ?? [];
-      ?>
-        <article class="project-card" id="proj-<?= $p['id'] ?>" data-category="<?= htmlspecialchars($p['category']) ?>">
-          <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($p['slug']) ?>" class="project-thumb-wrap" style="display: block;">
-            <img src="<?= BASE_URL ?>/<?= htmlspecialchars($p['cover_image']) ?>" 
-                 alt="<?= htmlspecialchars($p['title']) ?>" 
-                 class="project-thumb" 
-                 loading="lazy">
-            <span class="project-meta-pill"><?= htmlspecialchars($p['category']) ?></span>
-          </a>
+    <?php if (empty($projects)): ?>
+      <div style="text-align: center; padding: 60px 20px; color: var(--text-muted);">
+        <i class="fas fa-camera-retro" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px; display: block;"></i>
+        <h3 style="font-family: var(--font-title); font-size: 1.8rem; color: #fff; margin-bottom: 10px;">Próximamente Más Proyectos</h3>
+        <p>Estamos preparando nuevas galerías y coberturas para ti.</p>
+      </div>
+    <?php else: ?>
+      <div class="projects-grid">
+        <?php foreach ($projects as $p): 
+          $gallery = $projectImagesMap[$p['id']] ?? [];
+          $catName = $categoryMap[$p['category']] ?? $p['category'];
+          $cleanDesc = trim(strip_tags($p['description'] ?? ''));
+          if (mb_strlen($cleanDesc) > 160) {
+              $cleanDesc = mb_substr($cleanDesc, 0, 157) . '...';
+          }
+        ?>
+          <article class="project-card" id="proj-<?= $p['id'] ?>" data-category="<?= htmlspecialchars($p['category'] . ' ' . $catName) ?>">
+            <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($p['slug']) ?>" class="project-thumb-wrap" style="display: block;">
+              <img src="<?= BASE_URL ?>/<?= htmlspecialchars($p['cover_image']) ?>" 
+                   alt="<?= htmlspecialchars($p['title']) ?>" 
+                   class="project-thumb" 
+                   loading="lazy">
+              <span class="project-meta-pill"><?= htmlspecialchars($catName) ?></span>
+            </a>
 
-          <div class="project-card-body">
-            <div class="project-date">
-              <i class="far fa-calendar-alt"></i> <?= htmlspecialchars($p['event_date'] ?: 'Reciente') ?>
-              <?php if ($p['client']): ?>
-                &bull; <i class="far fa-building"></i> <?= htmlspecialchars($p['client']) ?>
-              <?php endif; ?>
-            </div>
+            <div class="project-card-body">
+              <div class="project-date">
+                <i class="far fa-calendar-alt"></i> <?= htmlspecialchars($p['event_date'] ?: 'Reciente') ?>
+                <?php if ($p['client']): ?>
+                  &bull; <i class="far fa-building"></i> <?= htmlspecialchars($p['client']) ?>
+                <?php endif; ?>
+              </div>
 
-            <h2 class="project-card-title">
-              <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($p['slug']) ?>" style="color: inherit;">
-                <?= htmlspecialchars($p['title']) ?>
-              </a>
-            </h2>
-            <p class="project-card-desc"><?= htmlspecialchars($p['description']) ?></p>
+              <h2 class="project-card-title">
+                <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($p['slug']) ?>" style="color: inherit;">
+                  <?= htmlspecialchars($p['title']) ?>
+                </a>
+              </h2>
+              <p class="project-card-desc"><?= htmlspecialchars($cleanDesc) ?></p>
 
             <!-- Project Mini Gallery / Thumbnails -->
             <?php if (!empty($gallery)): ?>
@@ -122,6 +153,7 @@ include __DIR__ . '/includes/header.php';
         </article>
       <?php endforeach; ?>
     </div>
+    <?php endif; ?>
   </div>
 </section>
 

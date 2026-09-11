@@ -3,8 +3,11 @@ require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
-$pageTitle = "Fotografía y Video Profesional en Santiago de Chile";
-$pageDescription = "Capturamos mucho más que momentos. Contamos historias a través de imágenes de eventos corporativos, fotografía gastronómica y retratos profesionales.";
+$pageTitle = "Fotografía y video para empresas y marcas";
+$pageDescription = "Soy Emmanuel Ramírez \"Funktographer\", creo imágenes para empresas, marcas y restaurantes a partir de lo que necesitan comunicar.";
+$pageImage = 'uploads/home/Foto-evento-Algo-electrico-con-quimica-Funktographer-24.jpg';
+$ogType = 'website';
+$pageCanonical = BASE_URL . '/';
 
 // Fetch active home images from MySQL ordered by display_order
 try {
@@ -47,10 +50,10 @@ include __DIR__ . '/includes/header.php';
       <span class="hero-badge-dot"></span> Santiago de Chile &bull; Cobertura Nacional e Internacional
     </div>
     <h1 class="hero-title">
-      Fotografía &amp; Video que <span class="highlight">Impacta y Trasciende</span>
+      Fotografía y video para <span class="highlight">empresas y marcas</span>
     </h1>
     <p class="hero-description">
-      Especialistas en capturar la fuerza de eventos corporativos, la elegancia de la fotografía gastronómica y la esencia humana en retratos de alta gama.
+      Soy Emmanuel Ramírez &ldquo;Funktographer&rdquo;, creo imágenes para empresas, marcas y restaurantes a partir de lo que necesitan comunicar. Desde retratos y eventos corporativos hasta productos y gastronomía, cada proyecto comienza desde tu idea y con mi ayuda creativa podrás materializarlo.
     </p>
     <div class="hero-actions">
       <a href="<?= BASE_URL ?>/proyectos" class="btn btn-primary">

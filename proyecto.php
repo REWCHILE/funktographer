@@ -35,6 +35,9 @@ $otherProjects = $stmtOther->fetchAll();
 
 $pageTitle = $project['title'];
 $pageDescription = !empty($project['description']) ? substr(strip_tags($project['description']), 0, 160) : $project['title'] . " — Cobertura profesional por Funktographer";
+$pageImage = $project['cover_image'];
+$ogType = 'article';
+$pageCanonical = BASE_URL . '/proyecto/' . urlencode($project['slug']);
 
 include __DIR__ . '/includes/header.php';
 ?>
@@ -85,7 +88,13 @@ include __DIR__ . '/includes/header.php';
         
         <?php if (!empty($project['description'])): ?>
           <div class="project-description-text">
-            <?= nl2br(htmlspecialchars($project['description'])) ?>
+            <?php 
+            if ($project['description'] !== strip_tags($project['description'])) {
+                echo $project['description'];
+            } else {
+                echo nl2br(htmlspecialchars($project['description']));
+            }
+            ?>
           </div>
         <?php else: ?>
           <p class="project-description-text" style="color: var(--text-muted);">
@@ -97,7 +106,7 @@ include __DIR__ . '/includes/header.php';
       <!-- Sidebar Meta Box -->
       <aside class="project-sidebar-meta">
         <div class="project-info-card">
-          <h4 style="font-family: var(--font-heading); font-size: 1.1rem; color: #fff; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+          <h4 style="font-family: var(--font-subtitle); font-size: 1.15rem; font-weight: normal; letter-spacing: 0.3px; color: #fff; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
             Ficha Técnica
           </h4>
 
@@ -142,7 +151,7 @@ include __DIR__ . '/includes/header.php';
     <div class="container">
       <div class="section-title-wrap" style="text-align: left; margin-bottom: 30px;">
         <span class="section-tag">Galería de Imágenes</span>
-        <h2 class="section-title">Registro &amp; Fotografías</h2>
+        <h2 class="section-title">Registro y Fotografías</h2>
         <p class="section-subtitle">Haz clic en cualquier toma para visualizar en alta resolución</p>
       </div>
 
@@ -185,14 +194,26 @@ if ($hasExtraTitle || $hasExtraContent || $ytEmbedUrl || $hasVideoFile):
             <span class="section-tag"><i class="fas fa-film"></i> Producción Audiovisual</span>
             <h2 class="section-title"><?= htmlspecialchars($project['extra_title']) ?></h2>
             <?php if ($hasExtraContent): ?>
-              <p class="section-subtitle" style="max-width: 800px; margin: 0 auto;">
-                <?= nl2br(htmlspecialchars($project['extra_content'])) ?>
-              </p>
+              <div class="section-subtitle" style="max-width: 800px; margin: 0 auto; line-height: 1.7;">
+                <?php 
+                if ($project['extra_content'] !== strip_tags($project['extra_content'])) {
+                    echo $project['extra_content'];
+                } else {
+                    echo nl2br(htmlspecialchars($project['extra_content']));
+                }
+                ?>
+              </div>
             <?php endif; ?>
           </div>
         <?php elseif ($hasExtraContent): ?>
-          <div style="max-width: 800px; margin: 0 auto 30px auto; text-align: center; color: var(--text-muted); font-size: 1.05rem;">
-            <?= nl2br(htmlspecialchars($project['extra_content'])) ?>
+          <div style="max-width: 800px; margin: 0 auto 30px auto; text-align: center; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;">
+            <?php 
+            if ($project['extra_content'] !== strip_tags($project['extra_content'])) {
+                echo $project['extra_content'];
+            } else {
+                echo nl2br(htmlspecialchars($project['extra_content']));
+            }
+            ?>
           </div>
         <?php endif; ?>
 

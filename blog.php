@@ -3,8 +3,11 @@ require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
-$pageTitle = "Blog & Casos de Estudio";
+$pageTitle = "Blog y Casos de Estudio";
 $pageDescription = "Consejos sobre fotografía corporativa, gastronomía, retratos profesionales y producción audiovisual en Santiago de Chile por Funktographer.";
+$pageImage = 'uploads/home/Evento-Orsan-Funktographer-1.jpg';
+$ogType = 'website';
+$pageCanonical = BASE_URL . '/blog';
 
 // Fetch all published posts
 $stmt = $pdo->prepare("
@@ -49,7 +52,7 @@ include __DIR__ . '/includes/header.php';
   </div>
   <div class="hero-bg-glow"></div>
   <div class="container hero-content">
-    <span class="section-tag">Revista &amp; Casos de Estudio</span>
+    <span class="section-tag">Revista y Casos de Estudio</span>
     <h1 class="hero-title">Blog Funktographer</h1>
     <p class="hero-description">
       Estrategias visuales, consejos de iluminación para eventos corporativos, estilismo gastronómico y detrás de cámaras en Santiago de Chile.
@@ -166,10 +169,10 @@ include __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Bottom CTA Section -->
-<section class="section" style="background: linear-gradient(180deg, transparent 0%, rgba(121, 56, 226, 0.08) 50%, transparent 100%); padding: 70px 0;">
+<section class="section" style="background: linear-gradient(180deg, transparent 0%, rgba(79, 44, 163, 0.15) 50%, transparent 100%); padding: 70px 0;">
   <div class="container text-center" style="max-width: 760px;">
     <span class="section-tag">Conversemos</span>
-    <h2 style="font-size: 2.2rem; font-family: var(--font-heading); color: #fff; margin-bottom: 16px;">
+    <h2 style="font-size: 2.4rem; font-family: var(--font-title); font-weight: normal; color: #fff; margin-bottom: 16px; letter-spacing: 0.5px;">
       ¿Planeas una producción o cobertura en tu empresa?
     </h2>
     <p style="color: var(--text-dim); font-size: 1.05rem; line-height: 1.7; margin-bottom: 30px;">

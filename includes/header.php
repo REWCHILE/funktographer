@@ -12,6 +12,27 @@ $instagram = get_setting('instagram', 'https://www.instagram.com/funktographer/'
 
 $pageTitle = isset($pageTitle) ? $pageTitle . " — " . $siteTitle : $siteTitle . " — " . $siteTagline;
 $pageDescription = isset($pageDescription) ? $pageDescription : $siteTagline;
+
+// Canonical and Open Graph meta tags for Facebook Debugger / WhatsApp / Twitter
+$defaultOgImage = BASE_URL . '/uploads/home/Foto-evento-Algo-electrico-con-quimica-Funktographer-24.jpg';
+if (!empty($pageImage)) {
+    if (str_starts_with($pageImage, 'http://') || str_starts_with($pageImage, 'https://')) {
+        $finalOgImage = $pageImage;
+    } else {
+        $finalOgImage = rtrim(BASE_URL, '/') . '/' . ltrim($pageImage, '/');
+    }
+} else {
+    $finalOgImage = $defaultOgImage;
+}
+
+if (!empty($pageCanonical)) {
+    $canonicalUrl = $pageCanonical;
+} else {
+    $reqUri = $_SERVER['REQUEST_URI'] ?? '';
+    $cleanUri = preg_replace('/[?].*$/', '', $reqUri);
+    $canonicalUrl = rtrim(BASE_URL, '/') . '/' . ltrim($cleanUri, '/');
+}
+$ogType = $ogType ?? 'website';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,9 +41,27 @@ $pageDescription = isset($pageDescription) ? $pageDescription : $siteTagline;
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= htmlspecialchars($pageTitle) ?></title>
   <meta name="description" content="<?= htmlspecialchars($pageDescription) ?>">
+  <link rel="canonical" href="<?= htmlspecialchars($canonicalUrl) ?>">
+
+  <!-- Open Graph / Facebook / WhatsApp Debugger Meta Tags -->
+  <meta property="og:site_name" content="<?= htmlspecialchars($siteTitle) ?>">
+  <meta property="og:type" content="<?= htmlspecialchars($ogType) ?>">
   <meta property="og:title" content="<?= htmlspecialchars($pageTitle) ?>">
   <meta property="og:description" content="<?= htmlspecialchars($pageDescription) ?>">
-  <meta property="og:type" content="website">
+  <meta property="og:url" content="<?= htmlspecialchars($canonicalUrl) ?>">
+  <meta property="og:image" content="<?= htmlspecialchars($finalOgImage) ?>">
+  <meta property="og:image:secure_url" content="<?= htmlspecialchars($finalOgImage) ?>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="<?= htmlspecialchars($pageTitle) ?>">
+  <meta property="og:locale" content="es_CL">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?= htmlspecialchars($pageTitle) ?>">
+  <meta name="twitter:description" content="<?= htmlspecialchars($pageDescription) ?>">
+  <meta name="twitter:image" content="<?= htmlspecialchars($finalOgImage) ?>">
+  <meta name="twitter:image:alt" content="<?= htmlspecialchars($pageTitle) ?>">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="<?= BASE_URL ?>/assets/img/favicon.png">
@@ -32,7 +71,7 @@ $pageDescription = isset($pageDescription) ? $pageDescription : $siteTagline;
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css?v=<?= filemtime(__DIR__ . '/../assets/css/style.css') ?>">
 </head>
 <body>
 

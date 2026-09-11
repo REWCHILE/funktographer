@@ -18,7 +18,7 @@ $siteEmail = get_setting('email', 'contacto@funktographer.cl');
 $siteInstagram = get_setting('instagram', 'https://www.instagram.com/funktographer/');
 $siteCoverage = get_setting('coverage', 'Santiago de Chile • Cobertura Nacional e Internacional');
 
-$pageTitle = "Funktographer — Bio Links & Hub Oficial";
+$pageTitle = "Funktographer — Bio Links y Hub Oficial";
 $pageDescription = "Enlaces oficiales, redes sociales, contacto directo y portafolio audiovisual de Funktographer en Santiago de Chile.";
 ?>
 <!DOCTYPE html>
@@ -30,12 +30,23 @@ $pageDescription = "Enlaces oficiales, redes sociales, contacto directo y portaf
   <meta name="description" content="<?= htmlspecialchars($pageDescription) ?>">
   <link rel="canonical" href="<?= BASE_URL ?>/links">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Facebook / WhatsApp Debugger -->
+  <meta property="og:site_name" content="Funktographer">
+  <meta property="og:type" content="profile">
   <meta property="og:title" content="<?= htmlspecialchars($pageTitle) ?>">
   <meta property="og:description" content="<?= htmlspecialchars($pageDescription) ?>">
   <meta property="og:url" content="<?= BASE_URL ?>/links">
-  <meta property="og:type" content="profile">
-  <meta property="og:image" content="<?= BASE_URL ?>/assets/img/logo.png">
+  <meta property="og:image" content="<?= BASE_URL ?>/uploads/home/Foto-evento-Algo-electrico-con-quimica-Funktographer-24.jpg">
+  <meta property="og:image:secure_url" content="<?= BASE_URL ?>/uploads/home/Foto-evento-Algo-electrico-con-quimica-Funktographer-24.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_CL">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?= htmlspecialchars($pageTitle) ?>">
+  <meta name="twitter:description" content="<?= htmlspecialchars($pageDescription) ?>">
+  <meta name="twitter:image" content="<?= BASE_URL ?>/uploads/home/Foto-evento-Algo-electrico-con-quimica-Funktographer-24.jpg">
 
   <link rel="icon" type="image/png" href="<?= BASE_URL ?>/assets/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -159,7 +170,7 @@ $pageDescription = "Enlaces oficiales, redes sociales, contacto directo y portaf
     <section class="bio-contact-card" aria-labelledby="contactCardTitle">
       <div class="bio-contact-card-header">
         <div class="bio-contact-card-title" id="contactCardTitle">
-          <i class="fas fa-address-card"></i> Contacto &amp; Cobertura
+          <i class="fas fa-address-card"></i> Contacto y Cobertura
         </div>
         <div class="bio-beacon-wrap" title="Disponibilidad activa para eventos y proyectos">
           <span class="bio-beacon-dot"></span> Disponible
@@ -209,7 +220,7 @@ $pageDescription = "Enlaces oficiales, redes sociales, contacto directo y portaf
             <i class="fas fa-globe-americas"></i>
           </div>
           <div class="bio-contact-info">
-            <span class="bio-contact-label">Base &amp; Cobertura</span>
+            <span class="bio-contact-label">Base y Cobertura</span>
             <span class="bio-contact-val" style="font-size: 0.88rem;"><?= htmlspecialchars($siteCoverage) ?></span>
           </div>
         </div>

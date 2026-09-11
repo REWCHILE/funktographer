@@ -34,7 +34,7 @@ $targetSelectId = $categorySelectId ?? 'category';
 
         <div class="adm-form-group">
           <label class="adm-form-label">Nombre de la Categoría *</label>
-          <input type="text" id="modalCatName" name="name" class="adm-input" placeholder="Ej: Fotografía Aérea &amp; Drones" required>
+          <input type="text" id="modalCatName" name="name" class="adm-input" placeholder="Ej: Fotografía Aérea y Drones" required>
         </div>
 
         <div class="adm-form-group">

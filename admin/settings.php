@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px;">
   <!-- Site Info Card -->
   <div class="adm-card">
-    <h3 class="adm-card-title" style="margin-bottom: 24px;">Información de la Marca &amp; Contacto</h3>
+    <h3 class="adm-card-title" style="margin-bottom: 24px;">Información de la Marca y Contacto</h3>
 
     <form action="<?= BASE_URL ?>/admin/settings" method="POST">
       <input type="hidden" name="form_type" value="site_settings">
@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <!-- Change Password Card -->
   <div class="adm-card">
-    <h3 class="adm-card-title" style="margin-bottom: 24px;">Seguridad &amp; Contraseña</h3>
+    <h3 class="adm-card-title" style="margin-bottom: 24px;">Seguridad y Contraseña</h3>
 
     <form action="<?= BASE_URL ?>/admin/settings" method="POST">
       <input type="hidden" name="form_type" value="password">

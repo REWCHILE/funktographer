@@ -5,6 +5,9 @@ require_once __DIR__ . '/includes/functions.php';
 
 $pageTitle = "Contacto — Reserva tu Sesión o Evento";
 $pageDescription = "Comunícate con Funktographer. Cotiza servicios fotográficos corporativos, gastronómicos o sesiones de retrato en Santiago de Chile.";
+$pageImage = 'uploads/home/Fotogo-Ponencia-cisco-mining-summit-2024-Funktographer.jpg';
+$ogType = 'website';
+$pageCanonical = BASE_URL . '/contacto';
 
 $formSubmitted = false;
 $formError = '';
@@ -64,7 +67,7 @@ include __DIR__ . '/includes/header.php';
       <!-- Left Column: Direct Info -->
       <div class="contact-card-info">
         <span class="section-tag">Canales Directos</span>
-        <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin-bottom: 24px;">
+        <h3 style="font-family: var(--font-subtitle); font-size: 1.8rem; font-weight: normal; letter-spacing: 0.3px; color: #fff; margin-bottom: 24px;">
           Información de Contacto
         </h3>
         <p style="color: var(--text-muted); margin-bottom: 36px; line-height: 1.6;">
@@ -116,7 +119,7 @@ include __DIR__ . '/includes/header.php';
             <i class="fas fa-map-marked-alt"></i>
           </div>
           <div class="contact-info-content">
-            <h6>Base &amp; Cobertura</h6>
+            <h6>Base y Cobertura</h6>
             <p style="margin: 0; color: #fff; font-size: 1rem;">
               Santiago de Chile &bull; Cobertura Nacional e Internacional
             </p>
@@ -139,7 +142,7 @@ include __DIR__ . '/includes/header.php';
 
       <!-- Right Column: Interactive Form -->
       <div class="form-box">
-        <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin-bottom: 8px;">
+        <h3 style="font-family: var(--font-subtitle); font-size: 1.8rem; font-weight: normal; letter-spacing: 0.3px; color: #fff; margin-bottom: 8px;">
           Envíanos un Mensaje
         </h3>
         <p style="color: var(--text-muted); margin-bottom: 28px;">
@@ -185,9 +188,9 @@ include __DIR__ . '/includes/header.php';
             <div class="form-group">
               <label class="form-label" for="service_type">Tipo de Servicio</label>
               <select class="form-control" id="service_type" name="service_type">
-                <option value="Eventos Corporativos">Eventos Corporativos &amp; Congresos</option>
-                <option value="Fotografía Gastronómica">Fotografía Gastronómica &amp; Carta</option>
-                <option value="Retrato & Moda">Retrato Editorial / Headshots</option>
+                <option value="Eventos Corporativos">Eventos Corporativos y Congresos</option>
+                <option value="Fotografía Gastronómica">Fotografía Gastronómica y Carta</option>
+                <option value="Retratos y Moda">Retrato Editorial / Headshots</option>
                 <option value="Producción Audiovisual">Producción Audiovisual / Video</option>
                 <option value="Otro">Otro requerimiento</option>
               </select>

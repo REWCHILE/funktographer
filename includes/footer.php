@@ -27,7 +27,7 @@ $coverage = get_setting('coverage', 'Santiago de Chile / Cobertura Nacional e In
           <ul class="footer-links">
             <li><a href="<?= BASE_URL ?>/">Inicio</a></li>
             <li><a href="<?= BASE_URL ?>/proyectos">Proyectos</a></li>
-            <li><a href="<?= BASE_URL ?>/blog">Blog &amp; Artículos</a></li>
+            <li><a href="<?= BASE_URL ?>/blog">Blog y Artículos</a></li>
             <li><a href="<?= BASE_URL ?>/sobre-mi">Sobre Mí</a></li>
             <li><a href="<?= BASE_URL ?>/contacto">Contacto</a></li>
           </ul>
@@ -38,7 +38,7 @@ $coverage = get_setting('coverage', 'Santiago de Chile / Cobertura Nacional e In
           <ul class="footer-links">
             <li><a href="<?= BASE_URL ?>/proyectos?cat=Eventos">Eventos Corporativos</a></li>
             <li><a href="<?= BASE_URL ?>/proyectos?cat=Gastronomia">Fotografía Gastronómica</a></li>
-            <li><a href="<?= BASE_URL ?>/proyectos?cat=Retratos">Retratos & Moda</a></li>
+            <li><a href="<?= BASE_URL ?>/proyectos?cat=Retratos">Retratos y Moda</a></li>
             <li><a href="<?= BASE_URL ?>/contacto">Producción Audiovisual</a></li>
           </ul>
         </div>
@@ -55,9 +55,6 @@ $coverage = get_setting('coverage', 'Santiago de Chile / Cobertura Nacional e In
 
       <div class="footer-bottom">
         <p>&copy; <?= date('Y') ?> <?= htmlspecialchars($siteTitle) ?>. Todos los derechos reservados.</p>
-        <div>
-          <a href="<?= BASE_URL ?>/admin/login" style="color: var(--text-dim);"><i class="fas fa-lock" style="font-size: 0.8rem;"></i> Panel Admin</a>
-        </div>
       </div>
     </div>
   </footer>

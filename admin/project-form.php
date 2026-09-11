@@ -204,7 +204,7 @@ require_once __DIR__ . '/header.php';
   </div>
 </div>
 
-<form action="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>" method="POST" enctype="multipart/form-data">
+<form id="projectForm" action="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
 
   <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; align-items: flex-start;">
@@ -264,8 +264,35 @@ require_once __DIR__ . '/header.php';
         </div>
 
         <div class="adm-form-group">
-          <label class="adm-form-label" for="description">Descripción / Historia del Proyecto</label>
-          <textarea class="adm-textarea" id="description" name="description" rows="5" placeholder="Resumen de la cobertura, objetivos fotográficos y resultados..."><?= htmlspecialchars($project['description'] ?? '') ?></textarea>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label class="adm-form-label" style="margin-bottom: 0;">Descripción / Historia del Proyecto</label>
+            <button type="button" class="adm-btn adm-btn-secondary" id="toggleHtmlDesc" style="padding: 4px 10px; font-size: 0.75rem;">
+              <i class="fas fa-code"></i> HTML
+            </button>
+          </div>
+
+          <!-- Rich Toolbar for Description -->
+          <div class="rich-editor-toolbar" id="toolbarDesc">
+            <button type="button" class="tool-btn" data-editor="editorDesc" data-cmd="formatBlock" data-val="h3" title="Encabezado 3"><strong>H3</strong></button>
+            <button type="button" class="tool-btn" data-editor="editorDesc" data-cmd="formatBlock" data-val="h4" title="Encabezado 4"><strong>H4</strong></button>
+            <button type="button" class="tool-btn" data-editor="editorDesc" data-cmd="formatBlock" data-val="p" title="Párrafo normal">P</button>
+            <span class="tool-sep"></span>
+            <button type="button" class="tool-btn" data-editor="editorDesc" data-cmd="bold" title="Negrita"><i class="fas fa-bold"></i></button>
+            <button type="button" class="tool-btn" data-editor="editorDesc" data-cmd="italic" title="Cursiva"><i class="fas fa-italic"></i></button>
+            <button type="button" class="tool-btn" data-editor="editorDesc" data-cmd="underline" title="Subrayado"><i class="fas fa-underline"></i></button>
+            <span class="tool-sep"></span>
+            <button type="button" class="tool-btn" data-editor="editorDesc" data-cmd="insertUnorderedList" title="Lista con viñetas"><i class="fas fa-list-ul"></i></button>
+            <button type="button" class="tool-btn" data-editor="editorDesc" data-cmd="insertOrderedList" title="Lista numerada"><i class="fas fa-list-ol"></i></button>
+            <span class="tool-sep"></span>
+            <button type="button" class="tool-btn btn-action-link" data-editor="editorDesc" title="Insertar Enlace"><i class="fas fa-link"></i> Enlace</button>
+            <button type="button" class="tool-btn" data-editor="editorDesc" data-cmd="unlink" title="Quitar Enlace"><i class="fas fa-unlink"></i></button>
+            <span class="tool-sep"></span>
+            <button type="button" class="tool-btn" data-editor="editorDesc" data-cmd="removeFormat" title="Limpiar Formato"><i class="fas fa-eraser"></i></button>
+          </div>
+
+          <!-- Visual Canvas for Description -->
+          <div id="editorDesc" class="rich-visual-editor" contenteditable="true" spellcheck="false"><?= !empty($project['description']) ? $project['description'] : '' ?></div>
+          <textarea id="description" name="description" style="display: none;"><?= htmlspecialchars($project['description'] ?? '') ?></textarea>
         </div>
 
         <div style="display: flex; gap: 24px; align-items: center; margin-top: 10px;">
@@ -285,18 +312,45 @@ require_once __DIR__ . '/header.php';
       <div class="adm-card" style="margin-top: 24px;">
         <h3 class="adm-card-title" style="margin-bottom: 20px;">
           <i class="fas fa-video" style="color: var(--adm-primary); margin-right: 8px;"></i>
-          Contenido Secundario &amp; Video Opcional
+          Contenido Secundario y Video Opcional
         </h3>
 
         <div class="adm-form-group">
           <label class="adm-form-label" for="extra_title">Título Secundario</label>
-          <input type="text" class="adm-input" id="extra_title" name="extra_title" value="<?= htmlspecialchars($project['extra_title'] ?? '') ?>" placeholder="Ej: Video de Cobertura &amp; Resumen Audiovisual">
+          <input type="text" class="adm-input" id="extra_title" name="extra_title" value="<?= htmlspecialchars($project['extra_title'] ?? '') ?>" placeholder="Ej: Video de Cobertura y Resumen Audiovisual">
           <div style="font-size: 0.8rem; color: var(--adm-muted); margin-top: 4px;">Aparecerá como encabezado en la sección inferior de la página del proyecto.</div>
         </div>
 
         <div class="adm-form-group">
-          <label class="adm-form-label" for="extra_content">Texto o Notas de Producción</label>
-          <textarea class="adm-textarea" id="extra_content" name="extra_content" rows="4" placeholder="Detalles sobre el rodaje, equipos utilizados o narrativa adicional..."><?= htmlspecialchars($project['extra_content'] ?? '') ?></textarea>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label class="adm-form-label" style="margin-bottom: 0;">Texto o Notas de Producción</label>
+            <button type="button" class="adm-btn adm-btn-secondary" id="toggleHtmlExtra" style="padding: 4px 10px; font-size: 0.75rem;">
+              <i class="fas fa-code"></i> HTML
+            </button>
+          </div>
+
+          <!-- Rich Toolbar for Extra Content -->
+          <div class="rich-editor-toolbar" id="toolbarExtra">
+            <button type="button" class="tool-btn" data-editor="editorExtra" data-cmd="formatBlock" data-val="h3" title="Encabezado 3"><strong>H3</strong></button>
+            <button type="button" class="tool-btn" data-editor="editorExtra" data-cmd="formatBlock" data-val="h4" title="Encabezado 4"><strong>H4</strong></button>
+            <button type="button" class="tool-btn" data-editor="editorExtra" data-cmd="formatBlock" data-val="p" title="Párrafo normal">P</button>
+            <span class="tool-sep"></span>
+            <button type="button" class="tool-btn" data-editor="editorExtra" data-cmd="bold" title="Negrita"><i class="fas fa-bold"></i></button>
+            <button type="button" class="tool-btn" data-editor="editorExtra" data-cmd="italic" title="Cursiva"><i class="fas fa-italic"></i></button>
+            <button type="button" class="tool-btn" data-editor="editorExtra" data-cmd="underline" title="Subrayado"><i class="fas fa-underline"></i></button>
+            <span class="tool-sep"></span>
+            <button type="button" class="tool-btn" data-editor="editorExtra" data-cmd="insertUnorderedList" title="Lista con viñetas"><i class="fas fa-list-ul"></i></button>
+            <button type="button" class="tool-btn" data-editor="editorExtra" data-cmd="insertOrderedList" title="Lista numerada"><i class="fas fa-list-ol"></i></button>
+            <span class="tool-sep"></span>
+            <button type="button" class="tool-btn btn-action-link" data-editor="editorExtra" title="Insertar Enlace"><i class="fas fa-link"></i> Enlace</button>
+            <button type="button" class="tool-btn" data-editor="editorExtra" data-cmd="unlink" title="Quitar Enlace"><i class="fas fa-unlink"></i></button>
+            <span class="tool-sep"></span>
+            <button type="button" class="tool-btn" data-editor="editorExtra" data-cmd="removeFormat" title="Limpiar Formato"><i class="fas fa-eraser"></i></button>
+          </div>
+
+          <!-- Visual Canvas for Extra Content -->
+          <div id="editorExtra" class="rich-visual-editor" contenteditable="true" spellcheck="false" style="min-height: 180px;"><?= !empty($project['extra_content']) ? $project['extra_content'] : '' ?></div>
+          <textarea id="extra_content" name="extra_content" style="display: none;"><?= htmlspecialchars($project['extra_content'] ?? '') ?></textarea>
         </div>
 
         <div class="adm-form-group">
@@ -409,5 +463,181 @@ require_once __DIR__ . '/header.php';
 $categorySelectId = 'category'; 
 require_once __DIR__ . '/modal-category.php'; 
 ?>
+
+<style>
+.rich-editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  background: #18112e;
+  border: 1px solid var(--adm-border);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 8px 10px;
+}
+.rich-editor-toolbar .tool-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #ddd;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+.rich-editor-toolbar .tool-btn:hover {
+  background: rgba(255, 197, 1, 0.15);
+  color: #FFC501;
+  border-color: rgba(255, 197, 1, 0.3);
+}
+.rich-editor-toolbar .tool-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--adm-border);
+  margin: 0 4px;
+}
+.rich-visual-editor {
+  min-height: 220px;
+  background: #110c22;
+  border: 1px solid var(--adm-border);
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 16px;
+  color: #eee;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  outline: none;
+  overflow-y: auto;
+}
+.rich-visual-editor:focus {
+  border-color: var(--adm-primary);
+}
+.rich-visual-editor h3 {
+  font-size: 1.25rem;
+  color: #fff;
+  margin: 16px 0 8px 0;
+  border-left: 3px solid var(--adm-primary);
+  padding-left: 10px;
+}
+.rich-visual-editor h4 {
+  font-size: 1.1rem;
+  color: #FFC501;
+  margin: 14px 0 6px 0;
+}
+.rich-visual-editor p {
+  margin-bottom: 12px;
+}
+.rich-visual-editor a {
+  color: var(--adm-primary);
+  text-decoration: underline;
+}
+.rich-visual-editor ul, .rich-visual-editor ol {
+  padding-left: 24px;
+  margin-bottom: 12px;
+}
+.rich-visual-editor li {
+  margin-bottom: 4px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const projectForm = document.getElementById('projectForm');
+  const editorDesc = document.getElementById('editorDesc');
+  const textareaDesc = document.getElementById('description');
+  const toggleHtmlDesc = document.getElementById('toggleHtmlDesc');
+
+  const editorExtra = document.getElementById('editorExtra');
+  const textareaExtra = document.getElementById('extra_content');
+  const toggleHtmlExtra = document.getElementById('toggleHtmlExtra');
+
+  let isHtmlDesc = false;
+  let isHtmlExtra = false;
+
+  // Generic Command Handlers
+  document.querySelectorAll('.rich-editor-toolbar .tool-btn[data-cmd]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const editorId = btn.getAttribute('data-editor');
+      const targetEditor = document.getElementById(editorId);
+      if (!targetEditor) return;
+
+      const cmd = btn.getAttribute('data-cmd');
+      const val = btn.getAttribute('data-val') || null;
+      targetEditor.focus();
+      document.execCommand(cmd, false, val);
+    });
+  });
+
+  // Link Buttons
+  document.querySelectorAll('.btn-action-link').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const editorId = btn.getAttribute('data-editor');
+      const targetEditor = document.getElementById(editorId);
+      if (!targetEditor) return;
+
+      const url = prompt('Ingresa la URL del enlace (ej: https://ejemplo.com):');
+      if (url) {
+        targetEditor.focus();
+        document.execCommand('createLink', false, url);
+      }
+    });
+  });
+
+  // Toggle HTML for Description
+  if (toggleHtmlDesc && editorDesc) {
+    toggleHtmlDesc.addEventListener('click', () => {
+      if (!isHtmlDesc) {
+        editorDesc.innerText = editorDesc.innerHTML;
+        toggleHtmlDesc.innerHTML = '<i class="fas fa-eye"></i> Visual';
+        toggleHtmlDesc.style.color = 'var(--adm-primary)';
+        isHtmlDesc = true;
+      } else {
+        editorDesc.innerHTML = editorDesc.innerText;
+        toggleHtmlDesc.innerHTML = '<i class="fas fa-code"></i> HTML';
+        toggleHtmlDesc.style.color = '';
+        isHtmlDesc = false;
+      }
+    });
+  }
+
+  // Toggle HTML for Extra Content
+  if (toggleHtmlExtra && editorExtra) {
+    toggleHtmlExtra.addEventListener('click', () => {
+      if (!isHtmlExtra) {
+        editorExtra.innerText = editorExtra.innerHTML;
+        toggleHtmlExtra.innerHTML = '<i class="fas fa-eye"></i> Visual';
+        toggleHtmlExtra.style.color = 'var(--adm-primary)';
+        isHtmlExtra = true;
+      } else {
+        editorExtra.innerHTML = editorExtra.innerText;
+        toggleHtmlExtra.innerHTML = '<i class="fas fa-code"></i> HTML';
+        toggleHtmlExtra.style.color = '';
+        isHtmlExtra = false;
+      }
+    });
+  }
+
+  // Form Submit: Synchronize Visual Editors with Hidden Textareas
+  if (projectForm) {
+    projectForm.addEventListener('submit', () => {
+      if (editorDesc && textareaDesc) {
+        textareaDesc.value = isHtmlDesc ? editorDesc.innerText : editorDesc.innerHTML;
+      }
+      if (editorExtra && textareaExtra) {
+        textareaExtra.value = isHtmlExtra ? editorExtra.innerText : editorExtra.innerHTML;
+      }
+    });
+  }
+});
+</script>
 
 <?php require_once __DIR__ . '/footer.php'; ?>

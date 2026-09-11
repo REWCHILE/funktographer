@@ -91,7 +91,7 @@ $posts = $stmt->fetchAll();
 
 <div class="adm-header">
   <div>
-    <h1 class="adm-title">Blog &amp; Artículos Editoriales</h1>
+    <h1 class="adm-title">Blog y Artículos Editoriales</h1>
     <p class="adm-subtitle">Publica casos de estudio, consejos fotográficos y novedades para atraer clientes y posicionar en Google</p>
   </div>
   <div style="display: flex; gap: 12px; align-items: center;">
@@ -162,9 +162,9 @@ $posts = $stmt->fetchAll();
         <thead>
           <tr>
             <th style="width: 80px;">Portada</th>
-            <th>Artículo &amp; URL</th>
+            <th>Artículo y URL</th>
             <th>Categoría</th>
-            <th>Lectura &amp; Vistas</th>
+            <th>Lectura y Vistas</th>
             <th>Estado</th>
             <th>Fecha</th>
             <th style="text-align: right;">Acciones</th>

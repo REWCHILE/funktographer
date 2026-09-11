@@ -2,22 +2,65 @@
    FUNKTOGRAPHER - Admin Backoffice Stylesheet
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap');
+/* Brand Fonts */
+@font-face {
+  font-family: 'Fifties Movies';
+  src: url('../fonts/Fifties-Movies.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dechorian';
+  src: url('../fonts/Dechorian.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('../fonts/Nexa-Book.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('../fonts/Nexa-Regular.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('../fonts/Nexa-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
-  --adm-bg: #0d0d12;
-  --adm-sidebar: #13131a;
-  --adm-card: #181824;
-  --adm-border: rgba(255, 255, 255, 0.08);
-  --adm-primary: #FFC501;
+  --adm-bg: #120826;
+  --adm-sidebar: #170b30;
+  --adm-card: #201142;
+  --adm-border: rgba(120, 80, 185, 0.22);
+  --adm-primary: #ffc501;
   --adm-primary-hover: #e5b000;
-  --adm-accent: #7938e2;
-  --adm-accent-hover: #8f4ff0;
+  --adm-accent: #4f2da3;
+  --adm-accent-hover: #6339cc;
+  --adm-orange: #fb5b23;
   --adm-success: #10b981;
   --adm-danger: #ef4444;
   --adm-warning: #f59e0b;
-  --adm-text: #f3f3f8;
-  --adm-muted: #8c8ca0;
+  --adm-text: #fbfaff;
+  --adm-muted: #b8b2cf;
+  --adm-font-title: 'Fifties Movies', cursive, sans-serif;
+  --adm-font-subtitle: 'Dechorian', sans-serif;
+  --adm-font-body: 'Nexa', 'Codec Warm', 'DM Sans', sans-serif;
 }
 
 *, *::before, *::after {
@@ -29,7 +72,7 @@
 body {
   background: var(--adm-bg);
   color: var(--adm-text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--adm-font-body);
   font-size: 15px;
   line-height: 1.5;
 }
@@ -69,9 +112,9 @@ a {
 }
 
 .adm-brand span {
-  font-family: 'Sora', sans-serif;
-  font-weight: 800;
-  font-size: 1.15rem;
+  font-family: var(--adm-font-title);
+  font-weight: normal;
+  font-size: 1.25rem;
   letter-spacing: 1px;
 }
 
@@ -164,9 +207,10 @@ a {
 }
 
 .adm-title {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--adm-font-subtitle);
   font-size: 1.7rem;
-  font-weight: 700;
+  font-weight: normal;
+  letter-spacing: 0.3px;
   color: #fff;
 }
 
@@ -206,9 +250,9 @@ a {
 }
 
 .adm-stat-val {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--adm-font-title);
   font-size: 1.8rem;
-  font-weight: 800;
+  font-weight: normal;
   color: #fff;
   line-height: 1;
 }
@@ -236,9 +280,10 @@ a {
 }
 
 .adm-card-title {
-  font-family: 'Sora', sans-serif;
+  font-family: var(--adm-font-subtitle);
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: normal;
+  letter-spacing: 0.3px;
   color: #fff;
 }
 

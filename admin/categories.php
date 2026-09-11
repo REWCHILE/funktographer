@@ -1,5 +1,5 @@
 <?php
-$adminTitle = "Gestión de Categorías & Filtros";
+$adminTitle = "Gestión de Categorías y Filtros";
 require_once __DIR__ . '/header.php';
 
 // Handle Actions
@@ -127,7 +127,7 @@ if ($editId > 0) {
     <div class="adm-breadcrumbs">
       <a href="<?= BASE_URL ?>/admin/index">Dashboard</a>
       <i class="fas fa-chevron-right"></i>
-      <span>Categorías &amp; Filtros</span>
+      <span>Categorías y Filtros</span>
     </div>
     <div class="adm-user-info">
       <a href="<?= BASE_URL ?>/" target="_blank" class="btn btn-outline btn-sm">
@@ -151,7 +151,7 @@ if ($editId > 0) {
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 14px;">
       <div>
         <h1 style="font-size: 1.6rem; color: #fff; margin-bottom: 4px;">
-          <i class="fas fa-tags" style="color: var(--adm-primary);"></i> Categorías &amp; Filtros (Pills)
+          <i class="fas fa-tags" style="color: var(--adm-primary);"></i> Categorías y Filtros (Pills)
         </h1>
         <p style="color: var(--adm-text-muted); font-size: 0.92rem;">
           Controla qué categorías existen y <strong>en qué orden aparecen los botones de filtro (pills)</strong> en el Home y Portafolio.
@@ -183,7 +183,7 @@ if ($editId > 0) {
           <div class="adm-form-group">
             <label class="adm-label">Nombre de la Categoría *</label>
             <input type="text" name="name" class="adm-input" required 
-                   placeholder="Ej: Fotografía Aérea &amp; Drones" 
+                   placeholder="Ej: Fotografía Aérea y Drones" 
                    value="<?= htmlspecialchars($editCategory['name'] ?? '') ?>"
                    id="catNameInput">
           </div>
@@ -224,7 +224,7 @@ if ($editId > 0) {
 
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--adm-border);">
             <h3 style="font-size: 1.15rem; color: #fff; margin: 0;">
-              Orden de Píldoras en Home &amp; Portafolio
+              Orden de Píldoras en Home y Portafolio
             </h3>
             <button type="submit" class="btn btn-primary btn-sm" style="background: var(--adm-primary); color: #09090c; font-weight: 700;">
               <i class="fas fa-sort-numeric-down"></i> Guardar Nuevo Orden
