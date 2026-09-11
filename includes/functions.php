@@ -37,6 +37,19 @@ function img_url($path) {
 }
 
 /**
+ * Get optimized WebP thumbnail URL (max 640px) if it exists, otherwise fall back to img_url
+ */
+function img_thumb_url($path) {
+    if (empty($path)) return $path;
+    $cleanPath = ltrim((string)$path, '/');
+    $thumbPath = preg_replace('/\.(jpe?g|png|webp)$/i', '_thumb.webp', $cleanPath);
+    if (file_exists(__DIR__ . '/../' . $thumbPath)) {
+        return $thumbPath;
+    }
+    return img_url($path);
+}
+
+/**
  * Clean and sanitize string input
  */
 function sanitize($input) {

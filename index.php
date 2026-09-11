@@ -93,7 +93,7 @@ include __DIR__ . '/includes/header.php';
              data-category="<?= htmlspecialchars($img['category']) ?>"
              data-full-src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($img['image_url'])) ?>"
              data-title="<?= htmlspecialchars($img['title']) ?>">
-          <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($img['image_url'])) ?>" 
+          <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_thumb_url($img['image_url'])) ?>" 
                alt="<?= htmlspecialchars($img['title']) ?>" 
                width="600" 
                height="600" 
@@ -176,7 +176,7 @@ include __DIR__ . '/includes/header.php';
       <?php foreach ($featuredProjects as $proj): ?>
         <article class="project-card" data-category="<?= htmlspecialchars($proj['category']) ?>">
           <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($proj['slug']) ?>" class="project-thumb-wrap" style="display: block;">
-            <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($proj['cover_image'])) ?>" 
+            <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_thumb_url($proj['cover_image'])) ?>" 
                  alt="<?= htmlspecialchars($proj['title']) ?>" 
                  class="project-thumb" 
                  width="634"
@@ -215,14 +215,14 @@ include __DIR__ . '/includes/header.php';
   </div>
   <div class="marquee-track">
     <?php 
-    // Show a ribbon of photos
-    $ribbon = array_slice($homeImages, 0, 16);
+    // Show a ribbon of photos (8 photos duplicated to 16 for smooth infinite loop)
+    $ribbon = array_slice($homeImages, 0, 8);
     // Duplicate for seamless infinite loop
     $loopRibbon = array_merge($ribbon, $ribbon);
     foreach ($loopRibbon as $r):
     ?>
       <div class="marquee-item">
-        <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($r['image_url'])) ?>" alt="<?= htmlspecialchars($r['title']) ?>" width="300" height="300" loading="lazy" decoding="async">
+        <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_thumb_url($r['image_url'])) ?>" alt="<?= htmlspecialchars($r['title']) ?>" width="300" height="300" loading="lazy" decoding="async">
       </div>
     <?php endforeach; ?>
   </div>

@@ -13,7 +13,7 @@ $coverage = get_setting('coverage', 'Santiago de Chile / Cobertura Nacional e In
       <div class="footer-top">
         <div class="footer-brand">
           <a href="<?= BASE_URL ?>/" class="brand-logo" title="<?= htmlspecialchars($siteTitle) ?>">
-            <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="<?= htmlspecialchars($siteTitle) ?>" width="161" height="91" loading="lazy">
+            <img src="<?= BASE_URL ?>/assets/img/logo.webp" alt="<?= htmlspecialchars($siteTitle) ?>" width="161" height="91" loading="lazy">
           </a>
           <p>
             Fotografía y producción audiovisual especializada en capturar la esencia de eventos corporativos, creaciones gastronómicas y retratos profesionales en Santiago de Chile.
@@ -62,6 +62,6 @@ $coverage = get_setting('coverage', 'Santiago de Chile / Cobertura Nacional e In
   </footer>
 
   <!-- Main JavaScript -->
-  <script src="<?= BASE_URL ?>/assets/js/main.js"></script>
+  <script src="<?= BASE_URL ?>/assets/js/main.js" defer></script>
 </body>
 </html>

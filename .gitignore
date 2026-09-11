@@ -15,3 +15,6 @@ Thumbs.db
 storage/sessions/*
 !storage/sessions/.gitkeep
 
+# Scratch debugging scripts
+scratch/
+

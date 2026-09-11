@@ -3,18 +3,28 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Sticky Header Scroll Effect
+  // 1. Sticky Header Scroll Effect (Zero forced reflow)
   const header = document.querySelector('.site-header');
   if (header) {
-    const handleScroll = () => {
-      if (window.scrollY > 40) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+    let ticking = false;
+    const updateHeader = () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+      ticking = false;
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Run asynchronously after first paint to eliminate forced layout calculation
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(updateHeader);
+    } else {
+      setTimeout(updateHeader, 60);
+    }
   }
 
   // 2. Off-canvas Drawer Navigation

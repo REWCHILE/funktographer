@@ -101,7 +101,7 @@ include __DIR__ . '/includes/header.php';
         ?>
           <article class="project-card" id="proj-<?= $p['id'] ?>" data-category="<?= htmlspecialchars($p['category'] . ' ' . $catName) ?>">
             <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($p['slug']) ?>" class="project-thumb-wrap" style="display: block;">
-              <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($p['cover_image'])) ?>" 
+              <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_thumb_url($p['cover_image'])) ?>" 
                    alt="<?= htmlspecialchars($cleanTitle) ?>" 
                    class="project-thumb" 
                    width="634"
@@ -136,7 +136,7 @@ include __DIR__ . '/includes/header.php';
                   <?php foreach (array_slice($gallery, 0, 5) as $g): ?>
                     <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($p['slug']) ?>" 
                        style="width: 58px; height: 58px; margin: 0; border-radius: 6px; overflow: hidden; display: inline-block;">
-                      <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_url($g['image_url'])) ?>" 
+                      <img src="<?= BASE_URL ?>/<?= htmlspecialchars(img_thumb_url($g['image_url'])) ?>" 
                            alt="<?= htmlspecialchars($g['caption'] ?: $p['title']) ?>" 
                            width="58"
                            height="58"

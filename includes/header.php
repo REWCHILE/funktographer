@@ -81,11 +81,14 @@ $ogType = $ogType ?? 'website';
   <link rel="apple-touch-icon" href="<?= BASE_URL ?>/assets/img/favicon.png">
 
   <!-- Icons (FontAwesome loaded non-blocking) -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css?v=<?= filemtime(__DIR__ . '/../assets/css/style.css') ?>">
+  <?php 
+  $cssFile = file_exists(__DIR__ . '/../assets/css/style.min.css') ? 'assets/css/style.min.css' : 'assets/css/style.css';
+  ?>
+  <link rel="stylesheet" href="<?= BASE_URL ?>/<?= $cssFile ?>?v=<?= filemtime(__DIR__ . '/../' . $cssFile) ?>">
 </head>
 <body>
 
@@ -95,7 +98,7 @@ $ogType = $ogType ?? 'website';
       <nav class="navbar" aria-label="Navegación principal">
         <!-- Logo -->
         <a href="<?= BASE_URL ?>/" class="brand-logo" title="<?= htmlspecialchars($siteTitle) ?>">
-          <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="<?= htmlspecialchars($siteTitle) ?>" width="161" height="91">
+          <img src="<?= BASE_URL ?>/assets/img/logo.webp" alt="<?= htmlspecialchars($siteTitle) ?>" width="161" height="91">
         </a>
 
         <!-- Desktop Menu -->
