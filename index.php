@@ -39,8 +39,9 @@ include __DIR__ . '/includes/header.php';
 <!-- Hero Section -->
 <section class="hero-section">
   <div class="hero-video-bg">
-    <video autoplay muted loop playsinline poster="<?= BASE_URL ?>/assets/video/hero-poster.jpg">
-      <source src="<?= BASE_URL ?>/assets/video/hero-bg.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" poster="<?= BASE_URL ?>/assets/video/hero-poster.webp">
+      <source media="(min-width: 769px)" src="<?= BASE_URL ?>/assets/video/hero-bg.mp4" type="video/mp4">
+      <track kind="captions" src="data:text/vtt,WEBVTT" label="Silencio" default>
     </video>
     <div class="hero-video-overlay"></div>
   </div>
@@ -94,6 +95,8 @@ include __DIR__ . '/includes/header.php';
              data-title="<?= htmlspecialchars($img['title']) ?>">
           <img src="<?= BASE_URL ?>/<?= htmlspecialchars($img['image_url']) ?>" 
                alt="<?= htmlspecialchars($img['title']) ?>" 
+               width="600"
+               height="600"
                loading="lazy">
           <div class="gallery-overlay">
             <span class="gallery-badge"><?= htmlspecialchars($img['category']) ?></span>
@@ -118,9 +121,9 @@ include __DIR__ . '/includes/header.php';
           <i class="fas fa-camera"></i>
         </div>
         <div class="action-card-body">
-          <h5>Ver Portafolio</h5>
+          <h3 class="action-card-title">Ver Portafolio</h3>
           <p>Conoce en profundidad nuestros proyectos completos, clientes corporativos y producciones editoriales.</p>
-          <a href="<?= BASE_URL ?>/proyectos" class="action-card-link">
+          <a href="<?= BASE_URL ?>/proyectos" class="action-card-link" aria-label="Explorar Trabajos del Portafolio">
             Explorar Trabajos <i class="fas fa-arrow-right"></i>
           </a>
         </div>
@@ -132,9 +135,9 @@ include __DIR__ . '/includes/header.php';
           <i class="fas fa-phone-volume"></i>
         </div>
         <div class="action-card-body">
-          <h5>Contáctanos Directo</h5>
+          <h3 class="action-card-title">Contáctanos Directo</h3>
           <p>¿Tienes un evento próximo o requieres una sesión fotográfica? Conversemos de inmediato.</p>
-          <a href="tel:<?= htmlspecialchars(get_setting('phone', '+56 9 4757 3794')) ?>" class="action-card-link">
+          <a href="tel:<?= htmlspecialchars(get_setting('phone', '+56 9 4757 3794')) ?>" class="action-card-link" aria-label="Llamar al teléfono <?= htmlspecialchars(get_setting('phone', '+56 9 4757 3794')) ?>">
             Llamar al <?= htmlspecialchars(get_setting('phone', '+56 9 4757 3794')) ?> <i class="fas fa-arrow-right"></i>
           </a>
         </div>
@@ -146,9 +149,9 @@ include __DIR__ . '/includes/header.php';
           <i class="fas fa-globe-americas"></i>
         </div>
         <div class="action-card-body">
-          <h5>Zona de Cobertura</h5>
+          <h3 class="action-card-title">Zona de Cobertura</h3>
           <p>Base en Santiago de Chile con disponibilidad para desplazamientos a cualquier región o destino internacional.</p>
-          <a href="<?= BASE_URL ?>/contacto" class="action-card-link">
+          <a href="<?= BASE_URL ?>/contacto" class="action-card-link" aria-label="Consultar disponibilidad y cobertura">
             Consultar Disponibilidad <i class="fas fa-arrow-right"></i>
           </a>
         </div>
@@ -175,6 +178,8 @@ include __DIR__ . '/includes/header.php';
             <img src="<?= BASE_URL ?>/<?= htmlspecialchars($proj['cover_image']) ?>" 
                  alt="<?= htmlspecialchars($proj['title']) ?>" 
                  class="project-thumb" 
+                 width="634"
+                 height="422"
                  loading="lazy">
             <span class="project-meta-pill"><?= htmlspecialchars($proj['category']) ?></span>
           </a>
@@ -188,7 +193,7 @@ include __DIR__ . '/includes/header.php';
             <p class="project-card-desc"><?= htmlspecialchars($proj['description']) ?></p>
             <div class="project-card-footer">
               <div class="project-client">Cliente: <span><?= htmlspecialchars($proj['client'] ?: 'Confidencial') ?></span></div>
-              <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($proj['slug']) ?>" class="btn btn-outline btn-sm">
+              <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($proj['slug']) ?>" class="btn btn-outline btn-sm" aria-label="Ver proyecto: <?= htmlspecialchars($proj['title']) ?>">
                 Ver Proyecto <i class="fas fa-arrow-right"></i>
               </a>
             </div>
@@ -202,7 +207,7 @@ include __DIR__ . '/includes/header.php';
 <!-- Instagram Marquee Ribbon -->
 <section class="marquee-section">
   <div class="marquee-header">
-    <a href="<?= htmlspecialchars(get_setting('instagram', 'https://www.instagram.com/funktographer/')) ?>" target="_blank">
+    <a href="<?= htmlspecialchars(get_setting('instagram', 'https://www.instagram.com/funktographer/')) ?>" target="_blank" aria-label="Síguenos en Instagram @funktographer">
       <i class="fab fa-instagram"></i> Síguenos en @funktographer
     </a>
   </div>
@@ -215,7 +220,7 @@ include __DIR__ . '/includes/header.php';
     foreach ($loopRibbon as $r):
     ?>
       <div class="marquee-item">
-        <img src="<?= BASE_URL ?>/<?= htmlspecialchars($r['image_url']) ?>" alt="<?= htmlspecialchars($r['title']) ?>" loading="lazy">
+        <img src="<?= BASE_URL ?>/<?= htmlspecialchars($r['image_url']) ?>" alt="<?= htmlspecialchars($r['title']) ?>" width="300" height="300" loading="lazy">
       </div>
     <?php endforeach; ?>
   </div>

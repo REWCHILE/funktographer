@@ -45,8 +45,9 @@ include __DIR__ . '/includes/header.php';
 <!-- Blog Page Header -->
 <section class="hero-section hero-page-header">
   <div class="hero-video-bg">
-    <video autoplay muted loop playsinline poster="<?= BASE_URL ?>/assets/video/hero-poster.jpg">
-      <source src="<?= BASE_URL ?>/assets/video/hero-bg.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" poster="<?= BASE_URL ?>/assets/video/hero-poster.webp">
+      <source media="(min-width: 769px)" src="<?= BASE_URL ?>/assets/video/hero-bg.mp4" type="video/mp4">
+      <track kind="captions" src="data:text/vtt,WEBVTT" label="Silencio" default>
     </video>
     <div class="hero-video-overlay"></div>
   </div>
@@ -60,7 +61,7 @@ include __DIR__ . '/includes/header.php';
 
     <!-- Search Box -->
     <div class="blog-search-bar" style="max-width: 540px; margin: 24px auto 30px auto; position: relative;">
-      <input type="text" id="blogSearchInput" class="form-control" placeholder="Buscar por tema, evento, gastronomía..." style="background: rgba(18, 18, 26, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 197, 1, 0.3); border-radius: 40px; padding: 14px 24px 14px 48px; color: #fff; font-size: 0.95rem; width: 100%; outline: none; box-shadow: 0 8px 30px rgba(0,0,0,0.5);">
+      <input type="text" id="blogSearchInput" class="form-control" placeholder="Buscar por tema, evento, gastronomía..." aria-label="Buscar artículos en el blog" style="background: rgba(18, 18, 26, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 197, 1, 0.3); border-radius: 40px; padding: 14px 24px 14px 48px; color: #fff; font-size: 0.95rem; width: 100%; outline: none; box-shadow: 0 8px 30px rgba(0,0,0,0.5);">
       <i class="fas fa-search" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1rem;"></i>
     </div>
 
@@ -89,7 +90,7 @@ include __DIR__ . '/includes/header.php';
     ?>
       <div class="blog-featured-card" data-category="<?= htmlspecialchars($featCat) ?>">
         <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($featuredPost['slug']) ?>" class="featured-thumb-wrap">
-          <img src="<?= BASE_URL ?>/<?= htmlspecialchars($featuredPost['cover_image']) ?>" alt="<?= htmlspecialchars($featTitle) ?>" class="featured-thumb">
+          <img src="<?= BASE_URL ?>/<?= htmlspecialchars($featuredPost['cover_image']) ?>" alt="<?= htmlspecialchars($featTitle) ?>" class="featured-thumb" width="800" height="450" loading="lazy">
           <span class="featured-badge"><i class="fas fa-star"></i> Destacado</span>
         </a>
         <div class="featured-body">
@@ -108,15 +109,15 @@ include __DIR__ . '/includes/header.php';
           </h2>
 
           <p class="featured-excerpt">
-            <?= htmlspecialchars($featuredPost['excerpt'] ?: substr(strip_tags($featuredPost['content']), 0, 200) . '...') ?>
+            <?= htmlspecialchars($featuredPost['excerpt'] ?: substr(strip_tags($featuredPost['content']), 0, 180) . '...') ?>
           </p>
 
           <div class="featured-footer">
-            <div class="blog-author-mini">
-              <img src="<?= BASE_URL ?>/assets/img/logo-circular.png" alt="Manuel" class="author-avatar-sm">
-              <span class="author-name"><?= htmlspecialchars($featuredPost['author']) ?></span>
+            <div class="featured-author">
+              <i class="fas fa-user-circle"></i>
+              <span>Por <?= htmlspecialchars($featuredPost['author_name'] ?: 'Emmanuel Ramírez') ?></span>
             </div>
-            <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($featuredPost['slug']) ?>" class="btn btn-primary btn-sm">
+            <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($featuredPost['slug']) ?>" class="btn btn-primary btn-sm" aria-label="Leer artículo: <?= htmlspecialchars($featTitle) ?>">
               Leer Artículo <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -132,7 +133,7 @@ include __DIR__ . '/includes/header.php';
       ?>
         <article class="blog-card" data-category="<?= htmlspecialchars($postCat) ?>" data-title="<?= htmlspecialchars(strtolower($postTitle)) ?>" data-excerpt="<?= htmlspecialchars(strtolower($post['excerpt'] ?? '')) ?>">
           <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($post['slug']) ?>" class="blog-card-thumb-wrap">
-            <img src="<?= BASE_URL ?>/<?= htmlspecialchars($post['cover_image']) ?>" alt="<?= htmlspecialchars($postTitle) ?>" class="blog-card-thumb" loading="lazy">
+            <img src="<?= BASE_URL ?>/<?= htmlspecialchars($post['cover_image']) ?>" alt="<?= htmlspecialchars($postTitle) ?>" class="blog-card-thumb" width="400" height="250" loading="lazy">
             <span class="blog-card-category"><?= htmlspecialchars($postCat) ?></span>
           </a>
 
@@ -154,7 +155,7 @@ include __DIR__ . '/includes/header.php';
             </p>
 
             <div class="blog-card-footer">
-              <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($post['slug']) ?>" class="blog-read-link">
+              <a href="<?= BASE_URL ?>/blog/<?= htmlspecialchars($post['slug']) ?>" class="blog-read-link" aria-label="Leer más sobre: <?= htmlspecialchars($postTitle) ?>">
                 Leer más <i class="fas fa-arrow-right"></i>
               </a>
             </div>

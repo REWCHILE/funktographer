@@ -63,12 +63,26 @@ $ogType = $ogType ?? 'website';
   <meta name="twitter:image" content="<?= htmlspecialchars($finalOgImage) ?>">
   <meta name="twitter:image:alt" content="<?= htmlspecialchars($pageTitle) ?>">
   
+  <!-- Preconnect and Resource Hints -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Preload Critical Brand Fonts to prevent CLS and FOIT -->
+  <link rel="preload" href="<?= BASE_URL ?>/assets/fonts/Fifties-Movies.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="<?= BASE_URL ?>/assets/fonts/Dechorian.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="<?= BASE_URL ?>/assets/fonts/Nexa-Book.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="<?= BASE_URL ?>/assets/fonts/Nexa-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="<?= BASE_URL ?>/assets/fonts/Nexa-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Preload Critical LCP Hero Poster Image -->
+  <link rel="preload" as="image" href="<?= BASE_URL ?>/assets/video/hero-poster.webp" type="image/webp" fetchpriority="high">
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="<?= BASE_URL ?>/assets/img/favicon.png">
   <link rel="apple-touch-icon" href="<?= BASE_URL ?>/assets/img/favicon.png">
 
-  <!-- Icons (FontAwesome or Bootstrap icons lightweight CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Icons (FontAwesome loaded non-blocking) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css?v=<?= filemtime(__DIR__ . '/../assets/css/style.css') ?>">
@@ -78,10 +92,10 @@ $ogType = $ogType ?? 'website';
   <!-- Site Header -->
   <header class="site-header">
     <div class="container">
-      <nav class="navbar">
+      <nav class="navbar" aria-label="Navegación principal">
         <!-- Logo -->
         <a href="<?= BASE_URL ?>/" class="brand-logo" title="<?= htmlspecialchars($siteTitle) ?>">
-          <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="<?= htmlspecialchars($siteTitle) ?>">
+          <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="<?= htmlspecialchars($siteTitle) ?>" width="161" height="91">
         </a>
 
         <!-- Desktop Menu -->
@@ -105,10 +119,10 @@ $ogType = $ogType ?? 'website';
 
         <!-- Action buttons -->
         <div class="nav-actions">
-          <a href="https://wa.me/<?= urlencode($whatsapp) ?>?text=Hola%20Funktographer,%20me%20gustaria%20cotizar%20un%20servicio" target="_blank" class="btn btn-primary btn-sm btn-header-cta">
+          <a href="https://wa.me/<?= urlencode($whatsapp) ?>?text=Hola%20Funktographer,%20me%20gustaria%20cotizar%20un%20servicio" target="_blank" class="btn btn-primary btn-sm btn-header-cta" aria-label="Cotizar por WhatsApp">
             <i class="fab fa-whatsapp"></i> Cotizar
           </a>
-          <button type="button" class="btn-icon" id="drawerOpenBtn" title="Menú">
+          <button type="button" class="btn-icon" id="drawerOpenBtn" title="Menú" aria-label="Abrir menú de navegación">
             <i class="fas fa-bars"></i>
           </button>
         </div>
@@ -118,18 +132,18 @@ $ogType = $ogType ?? 'website';
 
   <!-- Offcanvas Drawer -->
   <div class="drawer-overlay" id="drawerOverlay">
-    <aside class="drawer-panel">
+    <aside class="drawer-panel" aria-label="Menú lateral">
       <div class="drawer-header">
         <a href="<?= BASE_URL ?>/" class="brand-logo" title="<?= htmlspecialchars($siteTitle) ?>">
-          <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="<?= htmlspecialchars($siteTitle) ?>">
+          <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="<?= htmlspecialchars($siteTitle) ?>" width="161" height="91">
         </a>
-        <button type="button" class="drawer-close" id="drawerCloseBtn">
+        <button type="button" class="drawer-close" id="drawerCloseBtn" aria-label="Cerrar menú de navegación">
           Cerrar <i class="fas fa-times"></i>
         </button>
       </div>
 
       <div style="margin-bottom: 24px;">
-        <a href="https://wa.me/<?= urlencode($whatsapp) ?>?text=Hola%20Funktographer,%20me%20gustaria%20cotizar%20un%20servicio" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 0.95rem;">
+        <a href="https://wa.me/<?= urlencode($whatsapp) ?>?text=Hola%20Funktographer,%20me%20gustaria%20cotizar%20un%20servicio" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 0.95rem;" aria-label="Cotizar por WhatsApp">
           <i class="fab fa-whatsapp" style="font-size: 1.15rem;"></i> Cotizar por WhatsApp
         </a>
       </div>
@@ -158,20 +172,23 @@ $ogType = $ogType ?? 'website';
         </div>
 
         <div class="drawer-socials">
-          <a href="<?= htmlspecialchars($instagram) ?>" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/<?= urlencode($whatsapp) ?>" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="<?= htmlspecialchars($instagram) ?>" target="_blank" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/<?= urlencode($whatsapp) ?>" target="_blank" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
     </aside>
   </div>
 
   <!-- Lightbox Modal for Images -->
-  <div class="lightbox-modal" id="lightboxModal">
-    <button class="lightbox-btn lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
-    <button class="lightbox-btn lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
-    <button class="lightbox-btn lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Visor de imagen">
+    <button class="lightbox-btn lightbox-close" id="lightboxClose" aria-label="Cerrar visor"><i class="fas fa-times"></i></button>
+    <button class="lightbox-btn lightbox-prev" id="lightboxPrev" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-btn lightbox-next" id="lightboxNext" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
     <div class="lightbox-content">
       <img src="" alt="" id="lightboxImg">
       <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
   </div>
+
+  <!-- Main Content Landmark for Accessibility -->
+  <main id="main-content">

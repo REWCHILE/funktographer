@@ -162,6 +162,8 @@ include __DIR__ . '/includes/header.php';
                data-title="<?= htmlspecialchars($project['title']) ?> — <?= htmlspecialchars($g['caption'] ?: $project['category']) ?>">
             <img src="<?= BASE_URL ?>/<?= htmlspecialchars($g['image_url']) ?>" 
                  alt="<?= htmlspecialchars($g['caption'] ?: $project['title']) ?>" 
+                 width="600"
+                 height="600"
                  loading="lazy">
             <div class="gallery-overlay">
               <div class="gallery-info">
@@ -257,7 +259,7 @@ if ($hasExtraTitle || $hasExtraContent || $ytEmbedUrl || $hasVideoFile):
         <?php foreach ($otherProjects as $op): ?>
           <article class="project-card">
             <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($op['slug']) ?>" class="project-thumb-wrap" style="display: block;">
-              <img src="<?= BASE_URL ?>/<?= htmlspecialchars($op['cover_image']) ?>" alt="<?= htmlspecialchars($op['title']) ?>" class="project-thumb" loading="lazy">
+              <img src="<?= BASE_URL ?>/<?= htmlspecialchars($op['cover_image']) ?>" alt="<?= htmlspecialchars($op['title']) ?>" class="project-thumb" width="634" height="422" loading="lazy">
               <span class="project-meta-pill"><?= htmlspecialchars($op['category']) ?></span>
             </a>
             <div class="project-card-body">
@@ -270,7 +272,7 @@ if ($hasExtraTitle || $hasExtraContent || $ytEmbedUrl || $hasVideoFile):
               <p class="project-card-desc"><?= htmlspecialchars($op['description']) ?></p>
               <div class="project-card-footer">
                 <div class="project-client">Cliente: <span><?= htmlspecialchars($op['client'] ?: 'Confidencial') ?></span></div>
-                <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($op['slug']) ?>" class="btn btn-outline btn-sm">
+                <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($op['slug']) ?>" class="btn btn-outline btn-sm" aria-label="Ver proyecto: <?= htmlspecialchars($op['title']) ?>">
                   Ver Proyecto <i class="fas fa-arrow-right"></i>
                 </a>
               </div>

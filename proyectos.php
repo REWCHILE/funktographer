@@ -49,8 +49,9 @@ include __DIR__ . '/includes/header.php';
 <!-- Projects Page Header -->
 <section class="hero-section hero-page-header">
   <div class="hero-video-bg">
-    <video autoplay muted loop playsinline poster="<?= BASE_URL ?>/assets/video/hero-poster.jpg">
-      <source src="<?= BASE_URL ?>/assets/video/hero-bg.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" poster="<?= BASE_URL ?>/assets/video/hero-poster.webp">
+      <source media="(min-width: 769px)" src="<?= BASE_URL ?>/assets/video/hero-bg.mp4" type="video/mp4">
+      <track kind="captions" src="data:text/vtt,WEBVTT" label="Silencio" default>
     </video>
     <div class="hero-video-overlay"></div>
   </div>
@@ -74,24 +75,28 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Projects Grid -->
-<section class="section" style="padding-top: 0;">
+<!-- Projects Grid Section -->
+<section class="section" style="padding-top: 30px;">
   <div class="container">
     <?php if (empty($projects)): ?>
       <div style="text-align: center; padding: 60px 20px; color: var(--text-muted);">
-        <i class="fas fa-camera-retro" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px; display: block;"></i>
-        <h3 style="font-family: var(--font-title); font-size: 1.8rem; color: #fff; margin-bottom: 10px;">Próximamente Más Proyectos</h3>
-        <p>Estamos preparando nuevas galerías y coberturas para ti.</p>
+        <i class="fas fa-folder-open" style="font-size: 3rem; margin-bottom: 20px; color: var(--primary);"></i>
+        <h3>No se encontraron proyectos</h3>
+        <p>Pronto publicaremos nuevos trabajos en esta categoría.</p>
       </div>
     <?php else: ?>
       <div class="projects-grid">
         <?php foreach ($projects as $p): 
           $gallery = $projectImagesMap[$p['id']] ?? [];
-          $catName = str_replace('&', 'y', $categoryMap[$p['category']] ?? $p['category']);
-          $cleanTitle = str_replace('&', 'y', $p['title']);
-          $cleanDesc = trim(strip_tags($p['description'] ?? ''));
-          if (mb_strlen($cleanDesc) > 160) {
-              $cleanDesc = mb_substr($cleanDesc, 0, 157) . '...';
+          $cleanTitle = $p['title'];
+          $cleanDesc = $p['description'];
+          // Find matching category name
+          $catName = $p['category'];
+          foreach ($categories as $c) {
+            if (strcasecmp($c['slug'], $p['category']) === 0 || strcasecmp($c['name'], $p['category']) === 0) {
+              $catName = $c['name'];
+              break;
+            }
           }
         ?>
           <article class="project-card" id="proj-<?= $p['id'] ?>" data-category="<?= htmlspecialchars($p['category'] . ' ' . $catName) ?>">
@@ -99,6 +104,8 @@ include __DIR__ . '/includes/header.php';
               <img src="<?= BASE_URL ?>/<?= htmlspecialchars($p['cover_image']) ?>" 
                    alt="<?= htmlspecialchars($cleanTitle) ?>" 
                    class="project-thumb" 
+                   width="634"
+                   height="422"
                    loading="lazy">
               <span class="project-meta-pill"><?= htmlspecialchars($catName) ?></span>
             </a>
@@ -130,6 +137,9 @@ include __DIR__ . '/includes/header.php';
                        style="width: 58px; height: 58px; margin: 0; border-radius: 6px; overflow: hidden; display: inline-block;">
                       <img src="<?= BASE_URL ?>/<?= htmlspecialchars($g['image_url']) ?>" 
                            alt="<?= htmlspecialchars($g['caption'] ?: $p['title']) ?>" 
+                           width="58"
+                           height="58"
+                           loading="lazy"
                            style="width: 100%; height: 100%; object-fit: cover;">
                     </a>
                   <?php endforeach; ?>
@@ -143,10 +153,10 @@ include __DIR__ . '/includes/header.php';
             <?php endif; ?>
 
             <div class="project-card-footer">
-              <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($p['slug']) ?>" class="btn btn-primary btn-sm">
+              <a href="<?= BASE_URL ?>/proyecto/<?= htmlspecialchars($p['slug']) ?>" class="btn btn-primary btn-sm" aria-label="Ver proyecto: <?= htmlspecialchars($cleanTitle) ?>">
                 Ver Proyecto <i class="fas fa-arrow-right"></i>
               </a>
-              <a href="https://wa.me/<?= urlencode(get_setting('whatsapp', '56947573794')) ?>?text=Hola,%20me%20interesa%20un%20proyecto%20similar%20a:%20<?= urlencode($p['title']) ?>" target="_blank" class="btn btn-outline btn-sm">
+              <a href="https://wa.me/<?= urlencode(get_setting('whatsapp', '56947573794')) ?>?text=Hola,%20me%20interesa%20un%20proyecto%20similar%20a:%20<?= urlencode($p['title']) ?>" target="_blank" class="btn btn-outline btn-sm" aria-label="Cotizar proyecto: <?= htmlspecialchars($cleanTitle) ?> por WhatsApp">
                 <i class="fab fa-whatsapp"></i> Cotizar
               </a>
             </div>

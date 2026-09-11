@@ -5,25 +5,27 @@ $email = get_setting('email', 'contacto@funktographer.cl');
 $instagram = get_setting('instagram', 'https://www.instagram.com/funktographer/');
 $coverage = get_setting('coverage', 'Santiago de Chile / Cobertura Nacional e Internacional');
 ?>
+  </main><!-- /#main-content -->
+
   <!-- Site Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
           <a href="<?= BASE_URL ?>/" class="brand-logo" title="<?= htmlspecialchars($siteTitle) ?>">
-            <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="<?= htmlspecialchars($siteTitle) ?>">
+            <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="<?= htmlspecialchars($siteTitle) ?>" width="161" height="91" loading="lazy">
           </a>
           <p>
             Fotografía y producción audiovisual especializada en capturar la esencia de eventos corporativos, creaciones gastronómicas y retratos profesionales en Santiago de Chile.
           </p>
           <div class="drawer-socials" style="margin-top: 0;">
-            <a href="<?= htmlspecialchars($instagram) ?>" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/<?= urlencode(get_setting('whatsapp', '56947573794')) ?>" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="<?= htmlspecialchars($instagram) ?>" target="_blank" title="Instagram" aria-label="Instagram de Funktographer"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/<?= urlencode(get_setting('whatsapp', '56947573794')) ?>" target="_blank" title="WhatsApp" aria-label="WhatsApp de Funktographer"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
 
         <div class="footer-col">
-          <h5 class="footer-title">Navegación</h5>
+          <h3 class="footer-title">Navegación</h3>
           <ul class="footer-links">
             <li><a href="<?= BASE_URL ?>/">Inicio</a></li>
             <li><a href="<?= BASE_URL ?>/proyectos">Proyectos</a></li>
@@ -34,7 +36,7 @@ $coverage = get_setting('coverage', 'Santiago de Chile / Cobertura Nacional e In
         </div>
 
         <div class="footer-col">
-          <h5 class="footer-title">Especialidades</h5>
+          <h3 class="footer-title">Especialidades</h3>
           <ul class="footer-links">
             <li><a href="<?= BASE_URL ?>/proyectos?cat=Eventos">Eventos Corporativos</a></li>
             <li><a href="<?= BASE_URL ?>/proyectos?cat=Gastronomia">Fotografía Gastronómica</a></li>
@@ -44,7 +46,7 @@ $coverage = get_setting('coverage', 'Santiago de Chile / Cobertura Nacional e In
         </div>
 
         <div class="footer-col">
-          <h5 class="footer-title">Contacto</h5>
+          <h3 class="footer-title">Contacto</h3>
           <ul class="footer-links">
             <li><i class="fas fa-phone-alt" style="color: var(--primary); margin-right: 8px;"></i> <a href="tel:<?= htmlspecialchars($phone) ?>"><?= htmlspecialchars($phone) ?></a></li>
             <li><i class="fas fa-envelope" style="color: var(--primary); margin-right: 8px;"></i> <a href="mailto:<?= htmlspecialchars($email) ?>"><?= htmlspecialchars($email) ?></a></li>

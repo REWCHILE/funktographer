@@ -67,8 +67,6 @@
   font-display: swap;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Sora:wght@300;400;500;600;700;800&display=swap');
-
 :root {
   /* Brand Core Colors (Manual de Marca) */
   --brand-purple: #4f2da3;
@@ -106,7 +104,7 @@
   /* Brand Typography: Fifties Movies (Titulares), Dechorian (Subtítulos/Destacados), Nexa/Codec (Cuerpo/UI) */
   --font-title: 'Fifties Movies', cursive, -apple-system, sans-serif;
   --font-subtitle: 'Dechorian', -apple-system, sans-serif;
-  --font-body: 'Nexa', 'Codec Warm', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Nexa', 'Codec Warm', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-heading: var(--font-title);
   
   --radius-sm: 8px;
@@ -555,6 +553,7 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
+  contain: paint;
 }
 
 .hero-page-header {
@@ -570,6 +569,8 @@ button, input, textarea, select {
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
+  background-position: center;
+  background-size: cover;
 }
 
 .hero-video-bg video {
@@ -579,6 +580,18 @@ button, input, textarea, select {
   object-position: center;
   filter: brightness(0.42) contrast(1.15) saturate(1.1);
   transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .hero-video-bg video {
+    display: none !important;
+  }
+  .hero-video-bg {
+    background-image: url('../video/hero-poster.webp') !important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
 }
 
 .hero-video-overlay {
@@ -595,12 +608,14 @@ button, input, textarea, select {
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
-  width: 780px;
-  height: 480px;
+  width: min(780px, 90vw);
+  max-width: 100%;
+  height: min(480px, 60vh);
   background: radial-gradient(circle, rgba(255, 197, 1, 0.16) 0%, rgba(79, 44, 163, 0.28) 42%, rgba(18, 8, 38, 0) 70%);
   filter: blur(75px);
   z-index: 2;
   pointer-events: none;
+  contain: strict;
 }
 
 .hero-content {
@@ -874,6 +889,7 @@ button, input, textarea, select {
   box-shadow: 0 0 20px var(--primary-glow);
 }
 
+.action-card-body h3,
 .action-card-body h5 {
   font-family: var(--font-subtitle);
   font-size: 1.15rem;
@@ -973,7 +989,7 @@ button, input, textarea, select {
 
 .project-date {
   font-size: 0.85rem;
-  color: var(--text-dim);
+  color: #dcd6f0;
   margin-bottom: 8px;
 }
 
@@ -1009,11 +1025,11 @@ button, input, textarea, select {
 
 .project-client {
   font-size: 0.88rem;
-  color: var(--text-dim);
+  color: #dcd6f0;
 }
 
 .project-client span {
-  color: var(--text-muted);
+  color: #ffffff;
   font-weight: 600;
 }
 

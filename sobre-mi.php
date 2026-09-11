@@ -15,8 +15,9 @@ include __DIR__ . '/includes/header.php';
 <!-- About Hero Section -->
 <section class="hero-section hero-page-header">
   <div class="hero-video-bg">
-    <video autoplay muted loop playsinline poster="<?= BASE_URL ?>/assets/video/hero-poster.jpg">
-      <source src="<?= BASE_URL ?>/assets/video/hero-bg.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" poster="<?= BASE_URL ?>/assets/video/hero-poster.webp">
+      <source media="(min-width: 769px)" src="<?= BASE_URL ?>/assets/video/hero-bg.mp4" type="video/mp4">
+      <track kind="captions" src="data:text/vtt,WEBVTT" label="Silencio" default>
     </video>
     <div class="hero-video-overlay"></div>
   </div>
@@ -43,10 +44,10 @@ include __DIR__ . '/includes/header.php';
         </p>
 
         <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; line-height: 1.8;">
-          Mi trabajo une conceptualización, manejo de la luz y dirección visual. Antes de tomar la cámara, busco entender qué necesitas comunicar y cómo utilizarás las imágenes.
+          Para mí, cada imagen cuenta una historia. Con formación en publicidad y especialización en fotografía comercial, documental y dirección cinematográfica, veo la fotografía no solo como un registro estético, sino como una herramienta estratégica para conectar, emocionar y comunicar.
         </p>
 
-        <p style="color: var(--text-muted); margin-bottom: 26px; font-size: 1.05rem; line-height: 1.8;">
+        <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1.05rem; line-height: 1.8;">
           He desarrollado proyectos en Venezuela, Colombia, Ecuador, Perú y Chile. Hoy, desde Santiago, realizo fotografía y video corporativo, comercial y gastronómico, además de retratos, con una mirada cercana y atención al detalle.
         </p>
 
@@ -74,10 +75,10 @@ include __DIR__ . '/includes/header.php';
 
       <div class="about-img-grid">
         <div class="about-img-main">
-          <img src="<?= BASE_URL ?>/uploads/sobre-mi/emmanuel-ramirez-portrait.jpg" alt="Emmanuel Ramírez - Funktographer">
+          <img src="<?= BASE_URL ?>/uploads/sobre-mi/emmanuel-ramirez-portrait.jpg" alt="Emmanuel Ramírez - Funktographer" width="600" height="750" loading="lazy">
         </div>
         <div class="about-img-float">
-          <img src="<?= BASE_URL ?>/uploads/sobre-mi/emmanuel-ramirez-guitar.jpg" alt="Emmanuel Ramírez - Creador visual">
+          <img src="<?= BASE_URL ?>/uploads/sobre-mi/emmanuel-ramirez-guitar.jpg" alt="Emmanuel Ramírez - Creador visual" width="300" height="375" loading="lazy">
         </div>
       </div>
     </div>

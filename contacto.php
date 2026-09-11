@@ -45,8 +45,9 @@ include __DIR__ . '/includes/header.php';
 <!-- Contact Hero Section -->
 <section class="hero-section hero-page-header">
   <div class="hero-video-bg">
-    <video autoplay muted loop playsinline poster="<?= BASE_URL ?>/assets/video/hero-poster.jpg">
-      <source src="<?= BASE_URL ?>/assets/video/hero-bg.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" poster="<?= BASE_URL ?>/assets/video/hero-poster.webp">
+      <source media="(min-width: 769px)" src="<?= BASE_URL ?>/assets/video/hero-bg.mp4" type="video/mp4">
+      <track kind="captions" src="data:text/vtt,WEBVTT" label="Silencio" default>
     </video>
     <div class="hero-video-overlay"></div>
   </div>

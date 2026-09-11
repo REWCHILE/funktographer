@@ -117,7 +117,7 @@ INSERT INTO `home_images` VALUES
 ('23', 'Diana Arbol 3', 'uploads/home/diana_arbol_3.jpg', 'Retratos', '23', '1', '2026-09-08 15:53:50'),
 ('24', 'Evento Orsan Funktographer 6  ', 'uploads/home/Evento-Orsan-Funktographer-6-scaled.jpg', 'Eventos', '24', '1', '2026-09-08 15:53:50'),
 ('25', 'Giselle Red Bog Park    ', 'uploads/home/giselle_red_bog_park-scaled-1.jpg', 'Retratos', '25', '1', '2026-09-08 15:53:50'),
-('26', 'Solo Divas Cl2920  ', 'uploads/home/Solo-divas-cl2920-scaled.png', 'Retratos', '26', '1', '2026-09-08 15:53:50'),
+('26', 'Solo Divas Cl2920  ', 'uploads/home/Solo-divas-cl2920-scaled.jpg', 'Retratos', '26', '1', '2026-09-08 15:53:50'),
 ('27', 'Orsan    ', 'uploads/home/Orsan-1-scaled.jpg', 'Eventos', '27', '1', '2026-09-08 15:53:50'),
 ('28', 'Genesis  0', 'uploads/home/genesis-10.jpg', 'Retratos', '28', '1', '2026-09-08 15:53:50'),
 ('29', 'Gisell Tree', 'uploads/home/gisell_tree.jpg', 'Retratos', '29', '1', '2026-09-08 15:53:50'),
